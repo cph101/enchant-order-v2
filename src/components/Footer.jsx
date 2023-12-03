@@ -11,7 +11,7 @@ export default function Footer() {
   const themes = ['light', 'dark', 'crimson'];
 
   return (
-    <footer className="custom-content footer bg-base-200">
+    <footer className="custom-content footer">
       <div className="dark-mode-toggle-container">
         <div id="theme-switcher-form">
           {themes.map((theme, index) => (
@@ -28,7 +28,7 @@ export default function Footer() {
           ))}
         </div>
       </div>
-      <p>Built by Cal Henderson. <a href="https://github.com/iamcal/enchant-order">Source on Github</a></p>
+      <p>Built by Cal Henderson. <a className="text-link" href="https://github.com/iamcal/enchant-order">Source on Github</a></p>
     </footer>
   );
 };

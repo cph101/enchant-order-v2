@@ -12,6 +12,10 @@
   text-align: center !important;
 }
 
+.custom-content a {
+  text-decoration: underline;
+}
+
 .custom-content {
   display: block !important;
   margin-block-start: 1em !important;

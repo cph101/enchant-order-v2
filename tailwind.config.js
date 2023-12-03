@@ -13,13 +13,23 @@ export default {
         light: {
           ...require("daisyui/src/theming/themes")["light"],
           "base-100": "#e3e4eb",
-          "base-200": "white",
           "neutral-content": "#555",
+          ".footer": {
+            "background-color":"white",
+          },
+          ".text-link": {
+            "color": "#2140ba",
+          },
         },
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
           "base-100":"#333",
-          "base-200":"#222",
+          ".footer": {
+            "background-color":"#222",
+          },
+          ".text-link": {
+            "color": "#66b3ff",
+          },
         },
          crimson: {
 
@@ -28,11 +38,16 @@ export default {
        "accent": "#00aeff",
        "neutral": "#0e0a0d",
        "base-100": "#331320",
-       "base-200": "#4d1d31",
        "info": "#0089ff",
        "success": "#006666",
        "warning": "#ff9400",
        "error": "#ff284a",
+           ".footer": {
+             "background-color":"#4d1d31",
+           },
+           ".text-link": {
+             "color": "#66b3ff",
+           },
          },
        }
     ],
