@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-content p {
+  display: block !important;
+  margin-block-start: 1em !important;
+  margin-block-end: 1em !important;
+  margin-inline-start: 0 !important;
+  margin-inline-end: 0 !important;
+  margin: 1em 0 !important;
+  text-align: center !important;
+}
+
+.custom-content {
+  display: block !important;
+  margin-block-start: 1em !important;
+  margin-inline-start: 0 !important;
+  margin-inline-end: 0 !important;
+  float: initial;
+  text-align: initial;
+  font-size: initial;
+}
+/* Pretty sure a lot of this wasn't neccessary but I'm not going to test every single attribute */
