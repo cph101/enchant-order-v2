@@ -1,0 +1,10 @@
+node_modules
+dist-ssr
+dist
+*.local
+.breakpoints
+.DS_Store
+.replit
+replit.nix
+.github
+.git
