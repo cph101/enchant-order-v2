@@ -1,6 +1,7 @@
 import Footer from './components/Footer.jsx';
 
 export default function App() {
+  // console.log(navigator.languages[0])
   return (
     <main>
       <div role="alert" className="alert alert-success">
