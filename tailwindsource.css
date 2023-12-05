@@ -14,6 +14,7 @@
 
 .custom-content a {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .custom-content {

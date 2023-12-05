@@ -2509,8 +2509,30 @@ html {
   margin: 1.25rem;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .mt-6 {
@@ -2529,6 +2551,10 @@ html {
   display: inline;
 }
 
+.flex {
+  display: flex;
+}
+
 .table {
   display: table;
 }
@@ -2543,6 +2569,10 @@ html {
 
 .h-6 {
   height: 1.5rem;
+}
+
+.h-8 {
+  height: 2rem;
 }
 
 .w-6 {
@@ -2573,8 +2603,16 @@ html {
   resize: both;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
 .overflow-x-auto {
   overflow-x: auto;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .border {
@@ -2596,8 +2634,21 @@ html {
   line-height: 1.75rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-bold {
   font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.opacity-30 {
+  opacity: 0.3;
 }
 
 .blur {
@@ -2621,6 +2672,7 @@ html {
 
 .custom-content a {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .custom-content {
