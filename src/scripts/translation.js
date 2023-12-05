@@ -3,12 +3,12 @@ let languageId = '';
 let langListenerAttached;
 
 const languages = {
-  'en': ['English', 2],
-  'pt-BR': ['Português', 3],
-  'ru-RU': ['Русский', 2],
-  'zh-CN': ['中文', 3],
-  'nl': ['Nederlands', 2],
-  'de': ['Deutsch', 1],
+  'en': ['English', 3],
+  'pt-BR': ['Português', 4],
+  'ru-RU': ['Русский', 3],
+  'zh-CN': ['中文', 4],
+  'nl': ['Nederlands', 3],
+  'de': ['Deutsch', 2],
 };
 
 // END CONFIG
