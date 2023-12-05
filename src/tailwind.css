@@ -1392,6 +1392,19 @@ html {
   overflow: hidden;
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: var(--navbar-padding, 0.5rem);
+  min-height: 4rem;
+  width: 100%;
+}
+
+:where(.navbar > *) {
+  display: inline-flex;
+  align-items: center;
+}
+
 .progress {
   position: relative;
   width: 100%;
@@ -2469,6 +2482,14 @@ html {
   top: 0.5rem;
 }
 
+.mr-8 {
+  margin-right: 2rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
 .block {
   display: block;
 }
@@ -2493,21 +2514,46 @@ html {
   display: none;
 }
 
+.w-full {
+  width: 100%;
+}
+
+.max-w-xs {
+  max-width: 20rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-none {
+  flex: none;
+}
+
 .resize {
   resize: both;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
 }
 
 .border {
   border-width: 1px;
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+.bg-base-100 {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
 }
 
 .text-lg {
   font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
