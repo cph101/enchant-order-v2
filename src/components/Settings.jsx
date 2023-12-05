@@ -4,28 +4,32 @@ export default function Settings() {
   return (
     <main>
       <button
+        data-trnskey="settings"
         className="btn"
-        onClick={() => document.getElementById("my_modal_3").showModal()}
+        onClick={() => document.getElementById("mainSettings").showModal()}
       >
-      Settings
+        Loading...
       </button>
-      <dialog id="my_modal_3" className="modal">
-        <div className="modal-box">
+      <dialog id="mainSettings" className="modal ">
+        <div className="modal-box max-w-md">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
           </form>
-          <h3 className="font-bold text-lg">Settings</h3>
+          <h3 data-trnskey="settings" className="font-bold text-lg">
+            Loading...
+          </h3>
           <div className="overflow-x-auto mt-6">
-            <select className="select w-full max-w-xs">
-              <option disabled selected>Select Language</option>
-              <option>Test</option>
-              <option>Test</option>
-              <option>Test</option>
-              <option>Test</option>
-              <option>Test</option>
-            </select>
+            <div className="label">
+              <span data-trnskey="language" className="label-text">
+                Loading...
+              </span>
+            </div>
+            <select
+              data-property="languageSelect"
+              className="select-bordered select w-full max-w-xs"
+            ></select>
           </div>
         </div>
       </dialog>

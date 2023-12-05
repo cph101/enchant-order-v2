@@ -1,5 +1,6 @@
 let languageJson = {};
 let languageId = '';
+let langListenerAttached;
 
 const languages = {
   'en': ['English', 2],
@@ -15,7 +16,23 @@ const languages = {
 export async function setupLanguage() {
   await defineBrowserLanguage();
   await changePageLanguage(languageId || 'en');
+  attachLanguagePreferences()
 }
+
+export function attachLanguagePreferences() {
+  if (langListenerAttached) return;
+  const langSelect = document.querySelector('[data-property="languageSelect"]');
+
+  for (const [languageCode, [languageName, _]] of Object.entries(languages)) {
+    langSelect.innerHTML += `<option value="${languageCode}" ${languageId === languageCode ? "selected" : ""}>${languageName}</option>`;
+  }
+
+  langSelect.addEventListener('change', (e) => {
+    changePageLanguage(e.target.value);
+  });
+  langListenerAttached = true;
+}
+
 
 export async function defineBrowserLanguage() {
   if (!localStorage.getItem("savedlanguage")) {

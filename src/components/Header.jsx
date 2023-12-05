@@ -1,15 +1,17 @@
 import React from "react";
-import Settings from './Settings.jsx';
+import Settings from "./Settings";
 
 export default function Header() {
-  return(
+  return (
     <div className="navbar bg-base-100">
-      <div className="flex-1">
-        <a className="btn btn-ghost text-xl"><span data-trnskey="h1_title">Enchantment Calculator</span></a>
+      <div className="flex-1 m-5 mt-3">
+        <h1 data-trnskey="h1_title" className="font-bold text-2xl">
+          Loading...
+        </h1>
       </div>
-      <div className="flex-none mr-8">
+      <div className="flex-none m-5 mt-3">
         <Settings />
       </div>
     </div>
-  )
+  );
 }

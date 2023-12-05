@@ -40,6 +40,8 @@
     "note": "注意：显示的两个XP值是一次性保存所有级别/XP与每个附魔步骤之间获得级别/XP之间的差异。",
     "light_mode": "明亮模式",
     "dark_mode": "深色模式",
+    "settings" :  "设置",
+    "language" :  "语言",
 
     "items":{
         "helmet": "头盔",

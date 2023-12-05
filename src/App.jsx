@@ -1,8 +1,8 @@
-import Footer from './components/Footer.jsx';
-import Header from './components/Header.jsx';
-import './scripts/jquery-3.7.1.min.js';
-import { useEffect } from 'react';
-import * as translator from './scripts/translation.js';
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import "./scripts/jquery-3.7.1.min.js";
+import { useEffect } from "react";
+import * as translator from "./scripts/translation.js";
 
 // <span data-trnskey="translation_key">Usage</span>
 

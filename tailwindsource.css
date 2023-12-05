@@ -25,3 +25,7 @@
   text-align: initial;
   font-size: initial;
 }
+
+.select:focus {
+  outline: none !important;
+}

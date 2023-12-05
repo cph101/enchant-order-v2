@@ -39,7 +39,9 @@
     "calculating_solution": "Bereken de oplossing...",
     "note": "Let op: de twee getoonde XP-waarden zijn het verschil tussen het sparen voor alle niveaus/XP in één keer versus het verdienen van niveaus/XP tussen elke betoveringsstap.",
     "light_mode": "Ligte Modus",
-    "dark_mode": "Donker Modus",
+    "dark_mode": "Donkere Modus",
+    "settings" :  "Stellingen",
+    "language" :  "Taal",
 
     "items":{
         "helmet": "Helm",
