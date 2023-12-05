@@ -7,4 +7,4 @@ dist
 .replit
 replit.nix
 .github
-./src/tailwind.css
+src/tailwind.css
