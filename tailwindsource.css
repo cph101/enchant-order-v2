@@ -29,3 +29,7 @@
 .select:focus {
   outline: none !important;
 }
+
+.btn {
+  transition: background-color 0.25s, border-color 0.25s !important;
+}
