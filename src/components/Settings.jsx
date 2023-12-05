@@ -17,7 +17,16 @@ export default function Settings() {
             </button>
           </form>
           <h3 className="font-bold text-lg">Settings</h3>
-          <p className="py-4">At the moment this is all there is :P</p>
+          <div className="overflow-x-auto mt-6">
+            <select className="select w-full max-w-xs">
+              <option disabled selected>Select Language</option>
+              <option>Test</option>
+              <option>Test</option>
+              <option>Test</option>
+              <option>Test</option>
+              <option>Test</option>
+            </select>
+          </div>
         </div>
       </dialog>
     </main>

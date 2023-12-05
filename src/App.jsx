@@ -1,5 +1,5 @@
 import Footer from './components/Footer.jsx';
-import Settings from './components/Settings.jsx';
+import Header from './components/Header.jsx';
 import './scripts/jquery-3.7.1.min.js';
 import { useEffect } from 'react';
 import * as translator from './scripts/translation.js';
@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <main>
-      <Settings />
+      <Header />
       <Footer />
     </main>
   );
