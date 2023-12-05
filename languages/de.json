@@ -39,6 +39,8 @@
   "note": "Anmerkung: Die zwei XP-Werte zeigen den unterschied zwischen alles an XP/Level sparen und jedes mal XP/Level sammeln für jeden Verzauberungsschritt an.",
   "light_mode": "Light Mode",
   "dark_mode": "Dark Mode",
+  "settings" :  "Einstellungen",
+  "language" :  "Sprache",
 
   "items": {
     "helmet": "Helm",

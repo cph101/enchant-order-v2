@@ -39,6 +39,8 @@
 
     "light_mode": "Светлый режим",
     "dark_mode": "Темный режим",
+    "settings" :  "Настройки",
+    "language" :  "Язык",
 
     "items": {
         "helmet": "Шлем",

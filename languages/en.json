@@ -40,6 +40,8 @@
     "note": "Note: The two XP values shown are the difference between saving up for all levels/XP at once versus earning levels/XP between each enchantment step.",
     "light_mode": "Light Mode",
     "dark_mode": "Dark Mode",
+    "settings" :  "Settings",
+    "language" :  "Language",
 
     "items":{
         "helmet": "Helmet",
