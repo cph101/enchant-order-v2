@@ -42,6 +42,12 @@
     "dark_mode": "Dark Mode",
     "settings" :  "Settings",
     "language" :  "Language",
+    "credits" :  "Credits",
+    "gitlink": "Source On Github",
+    "creditsnotice": "Only the users with the most commits could be included due to spacing, but thanks to <a class='text-link' href='https://github.com/iamcal/enchant-order/graphs/contributors'>everyone who contributed.</a>",
+    "calcredit": "Original concept and owner",
+    "marcicredit": "Worked on the calculator algorithm",
+    "cphcredit": "Redesigned UI and ported to React",
 
     "items":{
         "helmet": "Helmet",

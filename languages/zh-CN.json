@@ -42,6 +42,13 @@
     "dark_mode": "深色模式",
     "settings" :  "设置",
     "language" :  "语言",
+    "credits": "鸣谢",
+    "gitlink": "GitHub上的源代码",
+    "creditsnotice": "由于空间限制，只包括了提交次数最多的用户，但感谢<a class='text-link' href='https://github.com/iamcal/enchant-order/graphs/contributors'>所有为项目做出贡献的人。</a>",
+    "calcredit": "原始概念和所有者",
+    "marcicredit": "参与计算器算法的开发",
+    "cphcredit": "重新设计了用户界面并迁移到 React",
+
 
     "items":{
         "helmet": "头盔",

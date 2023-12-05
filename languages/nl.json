@@ -42,6 +42,13 @@
     "dark_mode": "Donkere Modus",
     "settings" :  "Stellingen",
     "language" :  "Taal",
+    "credits": "Kredietten",
+    "gitlink": "Broncode op Github",
+    "creditsnotice": "Alleen de gebruikers met de meeste commits konden worden opgenomen vanwege de ruimte, maar bedankt aan <a class='text-link' href='https://github.com/iamcal/enchant-order/graphs/contributors'>iedereen die heeft bijgedragen.</a>",
+    "calcredit": "Oorspronkelijk concept en eigenaar",
+    "marcicredit": "Werkte aan het rekenmachine-algoritme",
+    "cphcredit": "Herschikte de UI en overgezet naar React",
+
 
     "items":{
         "helmet": "Helm",
