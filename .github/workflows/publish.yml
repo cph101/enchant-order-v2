@@ -1,14 +1,14 @@
 name: publish-to-pages-branch
 
 on:
- push:
+  push:
     branches:
       - main
     paths-ignore:
       - ./**.md
 
 jobs:
- css:
+  css:
     name: Compile CSS
     runs-on: ubuntu-latest
 
@@ -42,7 +42,7 @@ jobs:
           git commit -m "Built css for production"
           git push origin main
           
- build:
+  build:
     name: Build
     needs: css
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
           name: production-files
           path: ./dist
 
- deploy:
+  deploy:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
@@ -85,15 +85,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-
-      - name: Create .env file
-        if: steps.check_changes.outputs.changes == 'true'
-        run: |
-          echo "changes=true" > .env
-
-      - name: Upload .env file
-        if: steps.check_changes.outputs.changes == 'true'
-        uses: actions/upload-artifact@v3
-        with:
-          name: .env-file
-          path: .env
