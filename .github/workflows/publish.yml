@@ -30,10 +30,14 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git diff --exit-code --quiet -- src/tailwind.css || echo "::set-output name=changes::true"
+          if git diff --exit-code --quiet -- src/tailwind.css; then
+            echo "changes=false" >> $GITHUB_ENV
+          else
+            echo "changes=true" >> $GITHUB_ENV
+          fi
 
       - name: Commit Built CSS
-        if: steps.check_changes.outputs.changes == 'true'
+        if: env.check_changes == 'true'
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
