@@ -1,14 +1,14 @@
 name: publish-to-pages-branch
 
 on:
-  push:
+ push:
     branches:
       - main
     paths-ignore:
       - ./**.md
 
 jobs:
-  css:
+ css:
     name: Compile CSS
     runs-on: ubuntu-latest
 
@@ -30,14 +30,10 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --exit-code --quiet -- src/tailwind.css; then
-            echo "changes=false" >> $GITHUB_ENV
-          else
-            echo "changes=true" >> $GITHUB_ENV
-          fi
+          git diff --exit-code --quiet -- src/tailwind.css || echo "::set-output name=changes::true"
 
       - name: Commit Built CSS
-        if: env.check_changes_changes == 'true'
+        if: steps.check_changes.outputs.changes == 'true'
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -46,7 +42,7 @@ jobs:
           git commit -m "Built css for production"
           git push origin main
           
-  build:
+ build:
     name: Build
     needs: css
     runs-on: ubuntu-latest
@@ -71,7 +67,7 @@ jobs:
           name: production-files
           path: ./dist
 
-  deploy:
+ deploy:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
@@ -89,3 +85,15 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+
+      - name: Create .env file
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          echo "changes=true" > .env
+
+      - name: Upload .env file
+        if: steps.check_changes.outputs.changes == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: .env-file
+          path: .env
