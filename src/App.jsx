@@ -1,6 +1,7 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./scripts/jquery-3.7.1.min.js";
+import EnchantSelect from "./components/EnchantSelect";
 import { useEffect } from "react";
 import * as translator from "./scripts/translation.js";
 
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <main>
       <Header />
+      <EnchantSelect />
       <Footer />
     </main>
   );
