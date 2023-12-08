@@ -9,6 +9,7 @@ const languages = {
   'zh-CN': ['中文', 4],
   'nl': ['Nederlands', 3],
   'de': ['Deutsch', 2],
+  'be_BY': ['Belarusian', 1],
 };
 
 // END CONFIG
