@@ -26,7 +26,7 @@ export default function ItemSelect() {
   
   return(
     <div id="itemSelect" className="dropdown">
-      <div tabIndex={0} role="button" className="btn m-1"><img src={"../../public/" + selectedItem + ".png"}/>{selectedItem}</div>
+      <div tabIndex={0} role="button" className="btn m-1"><img src={"/images/" + selectedItem + ".gif"}/>{selectedItem}</div>
       <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
         {items.map((itemname, i) => {
           if (itemname != selectedItem) {
