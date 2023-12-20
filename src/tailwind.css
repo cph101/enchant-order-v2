@@ -2985,6 +2985,11 @@ html, body, #root {
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
+.itemSelectImage {
+  width: 25px;
+  height: 25px;
+}
+
 @media (min-width: 768px) {
   .md\:grid-cols-8 {
     grid-template-columns: repeat(8, minmax(0, 1fr));
