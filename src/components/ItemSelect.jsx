@@ -9,7 +9,7 @@ function useForceUpdate(){
 }
 
 export default function ItemSelect() {
-  let items = ["Sword", "Shield", "Chestplate", "Boots", "Helmet", "Carrot on Stick", "Chestplate", "Leggings"];
+  let items = ["Sword", "Shield", "Chestplate", "Boots", "Helmet", "Carrot on a Stick", "Chestplate", "Leggings"];
 
   let selectedItem = new Settings().getSetting('selectedItem');
 
@@ -26,12 +26,12 @@ export default function ItemSelect() {
   
   return(
     <div id="itemSelect" className="dropdown">
-      <div tabIndex={0} role="button" className="btn m-1"><img src={"/enchant-order-v2/images/" + selectedItem.toLowerCase() + ".gif"}/>{selectedItem}</div>
+      <div tabIndex={0} role="button" className="btn m-1"><img src={"/enchant-order-v2/images/" + selectedItem.toLowerCase().replaceAll(" ", "_") + ".gif"} className="itemSelectImage"/>{selectedItem}</div>
       <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
         {items.map((itemname, i) => {
           if (itemname != selectedItem) {
             return(
-              <li onClick={function(event) { chooseItem(itemname); forceUpdate()}} key={itemname}><a><img src={"/images/" + itemname + ".png"}/>{itemname}</a></li>
+              <li onClick={function(event) { chooseItem(itemname); forceUpdate()}} key={itemname}><a><img src={"/enchant-order-v2/images/" + itemname.toLowerCase().replaceAll(" ", "_") + ".gif"} className="itemSelectImage"/>{itemname}</a></li>
             );
           } else {
             return(<div key={itemname}></div>);

@@ -42,3 +42,8 @@ html, body, #root {
 .menu li > *:not(ul):not(.menu-title):not(details):active, .menu li > *:not(ul):not(.menu-title):not(details).active, .menu li > details > summary:active {
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
+
+.itemSelectImage {
+  width: 25px;
+  height: 25px;
+}
