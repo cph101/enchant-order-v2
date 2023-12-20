@@ -60,6 +60,9 @@ jobs:
         
       - name: Build project
         run: npm run build
+
+      - name: Prepare static resources
+        run: cp ./public/* ./dist/ -r
         
       - name: Upload build files
         uses: actions/upload-artifact@v3
