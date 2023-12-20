@@ -1,5 +1,7 @@
 import React from "react";
 import Settings from "./Settings";
+import ItemSelect from './ItemSelect'
+
 
 export default function Header() {
   return (
@@ -10,6 +12,7 @@ export default function Header() {
         </h1>
       </div>
       <div className="flex-none m-5 mt-3">
+        <ItemSelect />
         <Settings />
       </div>
     </div>
