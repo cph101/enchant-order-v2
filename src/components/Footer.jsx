@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <main>
-    <footer className="custom-content footer">
+    <footer className="custom-content footer bg-foreobject">
       <div className="dark-mode-toggle-container">
         <div id="theme-switcher-form">
           {themes.map((theme, index) => (

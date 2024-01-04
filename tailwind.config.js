@@ -12,9 +12,7 @@ export default {
           ...require("daisyui/src/theming/themes")["light"],
           "base-100": "#e3e4eb",
           "neutral-content": "#555",
-          ".footer": {
-            "background-color": "white",
-          },
+          "--foreobject": "white",
           ".text-link": {
             color: "#2140ba",
           },
@@ -22,16 +20,13 @@ export default {
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
           "base-100": "#333",
-          ".footer": {
-            "background-color": "#222",
-          },
+          "--foreobject": "#222",
           ".text-link": {
             color: "#66b3ff",
           },
         },
         crimson: {
           primary: "#813151",
-          secondary: "#672741",
           accent: "#00aeff",
           neutral: "#0e0a0d",
           "base-100": "#331320",
@@ -39,10 +34,8 @@ export default {
           success: "#006666",
           warning: "#ff9400",
           error: "#ff284a",
-          ".footer, .btn": {
-            "background-color": "#4d1d31",
-            "border-color": "#4d1d31",
-          },
+          secondary: "#672741",
+          "--foreobject": "#4d1d31",
           ".btn:hover": {
             "background-color": "#451a2c",
             "border-color": "#451a2c",

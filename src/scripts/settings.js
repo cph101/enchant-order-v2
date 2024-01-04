@@ -2,8 +2,8 @@ export class Settings {
     constructor() {
         this.defaultSettings = {
             theme: 'light',
-            fontSize: 'medium',
-            selectedItem: 'Sword'
+            selectedItem: 'Sword',
+            selectedTab: 'combat'
         };
         this.loadSettings();
     }

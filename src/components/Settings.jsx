@@ -4,7 +4,7 @@ export default function Settings() {
   return (
     <main>
       <button
-        className="btn"
+        className="btn bg-foreobject"
         onClick={() => document.getElementById("mainSettings").showModal()}
       >
         <svg

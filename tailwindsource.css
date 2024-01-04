@@ -31,7 +31,7 @@
   outline: none !important;
 }
 
-.btn {
+* {
   transition: background-color 0.35s, border-color 0.35s !important;
 }
 
@@ -46,4 +46,12 @@ html, body, #root {
 .itemSelectImage {
   width: 25px;
   height: 25px;
+  image-rendering: pixelated;
 }
+
+.dropdown-content .tabs { 
+  all: initial;
+  margin-left: 6px !important;
+  margin-right: 6px !important;
+  float: center !important;
+};

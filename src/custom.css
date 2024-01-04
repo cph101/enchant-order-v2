@@ -83,3 +83,22 @@
 .enchcard {
   border-radius: 10px;
 }
+
+#itemSelect .divider {
+  height: 3px;
+  margin: 3px;
+}
+
+.dropdown-content .tab-selected {
+  border-bottom-color: white !important;
+  border-bottom-color: oklch(0.746477 0.0216 264.43597) !important;
+}
+
+.bg-foreobject, .enchcard {
+  background-color: var(--foreobject) !important;
+  border-color: var(--foreobject) !important;
+}
+
+.dropdown-content .tab {
+  width: 50%;
+}
