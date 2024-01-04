@@ -102,3 +102,10 @@
 .dropdown-content .tab {
   width: 50%;
 }
+
+
+#itemSelect:not(:focus):not(:focus-within):not(:active) .tabs {
+  display: none;
+}
+/* Absolute kickass fix for the tabs lmao */
+/* At least it works I guess */

@@ -53,5 +53,6 @@ html, body, #root {
   all: initial;
   margin-left: 6px !important;
   margin-right: 6px !important;
+  margin-bottom: 6px !important;
   float: center !important;
 };

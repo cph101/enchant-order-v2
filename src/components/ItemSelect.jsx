@@ -9,7 +9,7 @@ function useForceUpdate(){
 }
 
 export default function ItemSelect() {
-  let items = { "combat" : ["Sword", "Trident", "Axe", "Bow", "Crossbow", "-", "Turtle Shell", "Helmet", "Chestplate", "Leggings", "Boots", "Shield"], "utilities" : ["Hoe", "Pickaxe", "Shovel", "Brush", "Shears", "Flint and Steel", "-", "Pumpkin", "Elytra", "Fishing Rod", "Carrot on a Stick", "Warped fungus on a Stick"]}; 
+  let items = { "combat" : ["Sword", "Trident", "Axe", "Bow", "Crossbow", "-", "Turtle Shell", "Helmet", "Chestplate", "Leggings", "Boots", "Shield"], "utilities" : ["Hoe", "Pickaxe", "Shovel", "Brush", "Shears", "Flint and Steel", "-", "Pumpkin", "Elytra", "Fishing Rod", "Carrot on a Stick", "Warped fungus on a Stick", "Book"]}; 
 
   let selectedItem = new Settings().getSetting('selectedItem');
 
