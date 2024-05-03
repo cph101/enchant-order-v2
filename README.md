@@ -4,6 +4,9 @@
 ![Build status](https://img.shields.io/github/actions/workflow/status/cph101/enchant-order-v2/publish.yml?logo=tailwindcss&logoColor=%2338BDF8&label=Build&color=%2338BDF8)
 ![Deploy status](https://img.shields.io/github/deployments/cph101/enchant-order-v2/github-pages?logo=googlechrome&logoColor=%2338BDF8&label=Deploy&color=%2338BDF8)
 
+> [!CAUTION]
+> This project is incomplete and not yet in a functional state.<br>
+> Please use the original version while we work to complete the former.
 
 **Based on [iamcal/enchant-order](https://github.com/iamcal/enchant-order)**
 
