@@ -92,8 +92,12 @@ export function changeLanguageByJson(languageJson) {
 }
 
 export function searchForComponents() {
-  console.log("translation script active");
   document.querySelectorAll('*[data-trnskey]').forEach(element => {
-    element.innerHTML = languageJson[element.getAttribute("data-trnskey")] || '';
+    var paths = element.getAttribute("data-trnskey").split(".");
+    var object = languageJson[paths[0]];
+    for (var i = 1; i < paths.length; i++) {
+      object = object[paths[i]];
+    }
+    element.innerHTML = object
   });
 }

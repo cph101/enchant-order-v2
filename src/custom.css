@@ -109,3 +109,12 @@
 }
 /* Absolute kickass fix for the tabs lmao */
 /* At least it works I guess */
+
+.settings-checkbox:not(:checked) {
+  background: var(--bg-secondary) !important;
+  transition: background-color 0s, border-color 0s !important;
+}
+
+.itemSelectTab {
+  font-family: sans-serif;
+}

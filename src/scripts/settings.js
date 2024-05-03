@@ -1,7 +1,7 @@
 export class Settings {
     constructor() {
         this.defaultSettings = {
-            theme: 'light',
+            theme: 'dark',
             selectedItem: 'Sword',
             selectedTab: 'combat'
         };

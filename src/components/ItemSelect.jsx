@@ -1,25 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Settings } from "../scripts/settings.js";
 
 function useForceUpdate(){
-    const [value, setValue] = useState(0); // integer state
-    return () => setValue(value => value + 1); // update state to force render
-    // A function that increment 👆🏻 the previous state like here 
-    // is better than directly setting `setValue(value + 1)`
+    const [value, setValue] = useState(0);
+    return () => setValue(value => value + 1);
 }
 
 export default function ItemSelect() {
-  let items = { "combat" : ["Sword", "Trident", "Axe", "Bow", "Crossbow", "-", "Turtle Shell", "Helmet", "Chestplate", "Leggings", "Boots", "Shield"], "utilities" : ["Hoe", "Pickaxe", "Shovel", "Brush", "Shears", "Flint and Steel", "-", "Pumpkin", "Elytra", "Fishing Rod", "Carrot on a Stick", "Warped fungus on a Stick", "Book"]}; 
+  let items = { "combat" : ["Sword", "Mace", "Trident", "Axe", "Bow", "Crossbow", "-", "Turtle Shell", "Helmet", "Chestplate", "Leggings", "Boots", "Shield"], "utilities" : ["Hoe", "Pickaxe", "Shovel", "Brush", "Shears", "Flint and Steel", "-", "Pumpkin", "Elytra", "Fishing Rod", "Carrot on a Stick", "Warped fungus on a Stick", "Book"]}; 
 
   let selectedItem = new Settings().getSetting('selectedItem');
 
   let selectedTab = new Settings().getSetting('selectedTab');
 
+  /*useEffect(() => {
+    const myEvent = new CustomEvent("test", {
+      detail: {},
+    });
+    document.documentElement.dispatchEvent(myEvent);
+  });*/
+
   const getTabClassNames = (tab) => {
     if (selectedTab == tab) {
-      return "tab tab-selected";
+      return "tab tab-selected itemSelectTab";
     } else {
-      return "tab";
+      return "tab itemSelectTab";
     }
   }
   
@@ -30,6 +35,11 @@ export default function ItemSelect() {
     }
     new Settings().updateSetting('selectedItem', item);
     selectedItem = item;
+
+    const myEvent = new CustomEvent("test", {
+      detail: {},
+    });
+    document.documentElement.dispatchEvent(myEvent);
   };
 
   const setTabTo = (tab) => {
@@ -49,7 +59,7 @@ export default function ItemSelect() {
         </div>
         {items[selectedTab].map((itemname, i) => {
           if (itemname == "-") {
-            return(<div className="divider"></div>)
+            return(<div key={itemname} className="divider"></div>)
           } else if (itemname != selectedItem) {
             return(
               <li onClick={function(event) { chooseItem(itemname); forceUpdate()}} key={itemname}><a><img src={"/enchant-order-v2/images/" + itemname.toLowerCase().replaceAll(" ", "_") + ".gif"} className="itemSelectImage"/>{itemname}</a></li>

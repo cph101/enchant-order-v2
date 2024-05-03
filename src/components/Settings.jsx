@@ -22,7 +22,7 @@ export default function Settings() {
           />
         </svg> <span data-trnskey="settings">Loading...</span>
       </button>
-      <dialog id="mainSettings" className="modal ">
+      <dialog id="mainSettings" className="modal">
         <div className="modal-box max-w-md">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
@@ -42,6 +42,15 @@ export default function Settings() {
               data-property="languageSelect"
               className="select-bordered select w-full max-w-xs"
             ></select>
+          </div>
+          <div className="overflow-x-auto mt-6">
+            <div className="label">
+              <span data-trnskey="optmzforbalance" className="label-text float-left">
+                Loading...
+              </span>
+              &nbsp;&nbsp;&nbsp;
+              <input type="checkbox" className="checkbox mr-auto settings-checkbox" />
+            </div>
           </div>
         </div>
       </dialog>

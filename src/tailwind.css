@@ -2949,6 +2949,10 @@ input.tab:checked + .tab-content,
   z-index: 1;
 }
 
+.float-left {
+  float: left;
+}
+
 .m-1 {
   margin: 0.25rem;
 }
@@ -2974,6 +2978,10 @@ input.tab:checked + .tab-content,
 
 .ml-2 {
   margin-left: 0.5rem;
+}
+
+.mr-auto {
+  margin-right: auto;
 }
 
 .mt-2 {
@@ -3113,6 +3121,11 @@ input.tab:checked + .tab-content,
   padding: 0.5rem;
 }
 
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -3188,7 +3201,7 @@ input.tab:checked + .tab-content,
   outline: none !important;
 }
 
-* {
+html.finishedLoading, html.finishedLoading * {
   transition: background-color 0.35s, border-color 0.35s !important;
 }
 

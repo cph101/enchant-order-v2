@@ -1,0 +1,8 @@
+[
+    { "item": "boots", "enchantments": [{ "name": "depth_strider", "level": 3 }], "prior_work": 0 },
+    { "item": "book", "enchantments": [{ "name": "unbreaking", "level": 2 }, { "name": "protection", "level": 3 }], "prior_work": 1 },
+    { "item": "book", "enchantments": [{ "name": "unbreaking", "level": 1 }], "prior_work": 0 },
+    { "item": "book", "enchantments": [{ "name": "unbreaking", "level": 1 }], "prior_work": 0 },
+    { "item": "book", "enchantments": [{ "name": "protection", "level": 2 }], "prior_work": 0 },
+    { "item": "book", "enchantments": [{ "name": "protection", "level": 2 }], "prior_work": 0 }
+]
