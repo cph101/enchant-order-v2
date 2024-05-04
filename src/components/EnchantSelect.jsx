@@ -24,19 +24,21 @@ export default function EnchantSelect() {
     return (
         <div className="h-screen px-7">
             <div className="grid grid-cols-8 md:grid-cols-8 grid-rows-3 md:grid-rows-2 gap-3 mx-auto h-[35%]">
-                {modpack_is_loaded
-                    ? enchantent_namespaces.map(name =>
-                          <div key={Math.random()} className="enchcard text-center">
-                              <span data-trnskey={"enchants." + name}>Loading...</span>
-                              <LoadDetector
-                                  callback={() => {
-                                      translator.searchForComponents();
-                                  }}
-                              />
-                          </div>
-                      )
-                    : <p>Loading...</p>}
+                {modpack_is_loaded ? enchantent_namespaces.map(generateEnchantmentSelection) : <p>Loading...</p>}
             </div>
+        </div>
+    );
+}
+
+function generateEnchantmentSelection(enchantment_namespace) {
+    const loading_display = <span data-trnskey={"enchants." + enchantment_namespace}>
+        Loading...
+    </span>;
+    const key = Math.random();
+    return (
+        <div key={key} className="enchcard text-center">
+            {loading_display}
+            <LoadDetector callback={translator.searchForComponents} />
         </div>
     );
 }
