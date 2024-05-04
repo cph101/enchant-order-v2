@@ -1,4 +1,3 @@
-import { TRACKED_DATA } from "../bridge.mjs";
 import { Metadata as ItemMetadata } from "./Item.js";
 
 export function update(data) {
@@ -10,33 +9,32 @@ export function update(data) {
 
     Metadata.enchantments = enchantments_metadata;
     Metadata.items = items_metadata;
-    Metadata.item_namespaces = item_namespaces;
     Metadata.enchantment_namespaces = enchantment_namespaces;
+    Metadata.item2id = invertList(item_namespaces);
+    Metadata.item2enchantments = Metadata.itemToEnchantments(item_namespaces, enchantment_namespaces, Metadata.item2id);
 
-    // dictionary from item namespace (string) to ID (int)
-    const item2id = invertList(item_namespaces);
     // dictionary from enchantment namespace (string) to ID (int)
     const enchantment2id = invertList(enchantment_namespaces);
     // dictionary from enchantment ID (int) to weight (int)
     const enchantment2weight = Metadata.enchantmentToWeight(enchantment_namespaces);
-    // dictionary from item ID (int) to enchantment IDs (array of int)
-    const item2enchantments = Metadata.itemToEnchantments(item_namespaces, enchantment_namespaces, item2id);
 
     ItemMetadata.setMaximumMergeLevels(maximum_merge_levels);
-    ItemMetadata.setItem2Id(item2id);
+    ItemMetadata.setItem2Id(Metadata.item2id);
     ItemMetadata.setEnchantment2Id(enchantment2id);
     ItemMetadata.setEnchantment2Weight(enchantment2weight);
 
-    TRACKED_DATA.itemToEnchants = item2enchantments;
-    TRACKED_DATA.itemsToIds = item2id;
-    TRACKED_DATA.idsToEnchants = enchantment_namespaces;
+    Metadata.modpackIsLoaded = true;
 }
 
-class Metadata {
+export class Metadata {
+    static modpackIsLoaded = false; // gets set to true after metadata for items and enchantments loads
+
     static enchantments = {};
     static items = {};
-    static item_namespaces = [];
-    static enchantment_namespaces = [];
+    static enchantment_namespaces = []; // array from enchantment ID (int) to namespace (string)
+    static item2id = {}; // dictionary from item namespace (string) to ID (int)
+    static item2enchantments = []; // array from item ID (int) to enchantment IDs (array of int)
+    static enchantment2id = {}; // dictionary from enchantment namespace (string) to ID (int)
 
     static enchantmentToWeight(enchantment_namespaces) {
         const enchantments_metadata = this.enchantments;
@@ -59,12 +57,20 @@ class Metadata {
             const enchantment_namespace = enchantment_namespaces[enchantment_id];
             const enchantment_metadata = enchantments_metadata[enchantment_namespace];
             const enchantment_items = enchantment_metadata["items"];
-            enchantment_items.forEach(item_namespace => {
+            enchantment_items.forEach((item_namespace) => {
                 const item_id = item2id[item_namespace];
                 item2enchantments[item_id].push(enchantment_id);
             });
         }
         return item2enchantments;
+    }
+
+    static itemToEnchantmentName(item_namespace) {
+        if (!Metadata.modpackIsLoaded) return [];
+        const item_id = Metadata.item2id[item_namespace];
+        const enchantment_ids = Metadata.item2enchantments[item_id];
+        const enchantment_namespaces = enchantment_ids.map((id) => Metadata.enchantment_namespaces[id]);
+        return enchantment_namespaces;
     }
 }
 
