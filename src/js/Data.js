@@ -44,11 +44,21 @@ export class Metadata {
         return enchantment2weight;
     }
 
-    static enchantmentToMaxLevel(enchantment_namespace) {
-        const enchantments_metadata = Metadata.enchantments;
+    static getItemNamespaces() {
+        return Object.keys(Metadata.items);
+    }
 
+    static getFirstItemNamespaceInLayout() {
+        const tabs_metadata = Object.values(Metadata.layout);
+        const first_tab_metadata = tabs_metadata[0];
+        const item_namespaces_in_tab = first_tab_metadata["items"];
+        return item_namespaces_in_tab[0];
+    }
+
+    static enchantmentNamespaceToMaxLevel(enchantment_namespace) {
+        const enchantments_metadata = Metadata.enchantments;
         const enchantment_metadata = enchantments_metadata[enchantment_namespace];
-        return enchantment_metadata["level_max"];
+        return parseInt(enchantment_metadata["level_max"]);
     }
 
     static itemToEnchantmentNames(item_namespace) {

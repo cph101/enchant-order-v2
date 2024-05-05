@@ -1,3 +1,5 @@
+import { update as updateMetadata, Metadata } from "../js/Data.js";
+
 export class Settings {
     static defaultSettings = {
         selectedItem: "sword",
@@ -10,10 +12,8 @@ export class Settings {
     static loadSettings() {
         const savedSettings = localStorage.getItem("settings");
         Settings.settings = savedSettings ? JSON.parse(savedSettings) : { ...Settings.defaultSettings };
-    }
-
-    static saveSettings() {
-        localStorage.setItem("settings", JSON.stringify(Settings.settings));
+        refreshAll();
+        resetSettings();
     }
 
     static getSelectedItem() {
@@ -25,29 +25,74 @@ export class Settings {
     static getSelectedTab() {
         return Settings.getSetting("selectedTab");
     }
+    static getTheme() {
+        return Settings.getSetting("theme");
+    }
     static getSetting(key) {
         return Settings.settings[key];
     }
 
     static setSelectedItem(item_name) {
         Settings.setSetting("selectedItem", item_name);
-        document.documentElement.dispatchEvent(new CustomEvent("RefreshItemRender"));
-        document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantRender"));
+        refreshSelectedItem();
     }
     static setSelectedModpack(modpack_name) {
         Settings.setSetting("selectedModpack", modpack_name);
+        refreshSelectedModpack();
     }
     static setSelectedTab(tab_name) {
         Settings.setSetting("selectedTab", tab_name);
-        document.documentElement.dispatchEvent(new CustomEvent("RefreshItemRender"));
+        refreshSelectedTab();
+    }
+    static setTheme(theme) {
+        Settings.setSetting("theme", theme);
     }
     static setSetting(key, value) {
         Settings.settings[key] = value;
-        Settings.saveSettings();
+        saveSettings();
     }
+}
 
-    static resetSettings() {
-        Settings.settings = Settings.defaultSettings;
-        Settings.saveSettings();
+function saveSettings() {
+    localStorage.setItem("settings", JSON.stringify(Settings.settings));
+}
+function resetSettings() {
+    Settings.settings = Settings.defaultSettings;
+    refreshAll();
+    saveSettings();
+}
+function refreshAll() {
+    refreshSelectedModpack();
+    refreshSelectedItem();
+    refreshSelectedTab();
+    refreshTheme();
+}
+
+function refreshSelectedItem() {
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantSelect"));
+}
+async function refreshSelectedModpack() {
+    const modpack_name = Settings.getSelectedModpack();
+    const modpack_filepath = "./modpacks/" + modpack_name + ".json";
+    await fetch(modpack_filepath)
+        .then((response) => response.json())
+        .then(updateMetadata);
+
+    refreshItemAfterModpack(Settings.getSelectedItem());
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshModpackSelect"));
+    refreshSelectedItem();
+}
+function refreshSelectedTab() {
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
+}
+function refreshTheme() {}
+
+function refreshItemAfterModpack(previous_item_namespace) {
+    const item_namespaces = Metadata.getItemNamespaces();
+    const new_modpack_has_item = !item_namespaces.includes(previous_item_namespace);
+    if (new_modpack_has_item) {
+        const new_item_namespace = Metadata.getFirstItemNamespaceInLayout();
+        Settings.setSelectedItem(new_item_namespace);
     }
 }

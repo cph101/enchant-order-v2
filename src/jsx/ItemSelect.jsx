@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { Settings } from "../js/settings.js";
 import { Metadata } from "../js/Data.js";
 
@@ -9,7 +9,7 @@ function useForceUpdate() {
 
 export default function ItemSelect() {
     const forceUpdate = useForceUpdate();
-    document.documentElement.addEventListener("RefreshItemRender", forceUpdate);
+    document.documentElement.addEventListener("RefreshItemSelect", forceUpdate);
 
     const tab2item_namespaces = Metadata.getLayout();
     const modpack_is_loaded = Metadata.modpackIsLoaded;
@@ -23,11 +23,11 @@ export default function ItemSelect() {
 function generateItemSelectors(tab2item_namespaces) {
     const selected_item_namespace = Settings.getSelectedItem();
     const selected_item_section = generateSelectedItemDisplay(selected_item_namespace);
-    const tab_section = generateTabPage(tab2item_namespaces);
+    const tab_page = generateTabPage(tab2item_namespaces);
     return (
         <div id="itemSelect" className="dropdown">
             {selected_item_section}
-            {tab_section}
+            {tab_page}
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import Footer from "./Footer";
+import Content from "./Content.jsx";
 import Header from "./Header";
 import "../js/jquery-3.7.1.min.js";
-import EnchantSelect from "./EnchantSelect";
 import * as translator from "../js/translation";
 import LoadDetector from "./LoadDetector";
 
@@ -11,25 +11,17 @@ export default function App() {
     return (
         <main>
             <Header />
-            <EnchantSelect />
+            <Content />
             <Footer />
-            <LoadDetector
-                callback={function() {
-                    async function changeLanguage() {
-                        await translator.setupLanguage();
-                        // async wrapper neccessary in order to execute setupLang function
-                    }
-                    changeLanguage();
-                    window.setTimeout(onLoad, 500);
-                }}
-            />
+            <LoadDetector callback={onLoad} />
         </main>
     );
 }
 
-function onLoad() {
+async function onLoad() {
+    await translator.setupLanguage();
     document.documentElement.classList.add("finishedLoading");
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemRender"));
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantRender"));
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshModpackSelect"));
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantSelect"));
 }
-
