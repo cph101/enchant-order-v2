@@ -1,0 +1,108 @@
+{
+    "enchantments": {
+        "channeling": {
+            "level_max": "1",
+            "weight": "4",
+            "incompatible": ["riptide"],
+            "items": ["trident"],
+            "stylized": "Channeling"
+        },
+        "fire_aspect": {
+            "level_max": "2",
+            "weight": "2",
+            "incompatible": [],
+            "items": ["sword"],
+            "stylized": "Fire Aspect"
+        },
+        "impaling": {
+            "level_max": "5",
+            "weight": "2",
+            "incompatible": [],
+            "items": ["trident"],
+            "stylized": "Impaling"
+        },
+        "knockback": {
+            "level_max": "2",
+            "weight": "1",
+            "incompatible": [],
+            "items": ["sword"],
+            "stylized": "Knockback"
+        },
+        "looting": {
+            "level_max": "3",
+            "weight": "2",
+            "incompatible": [],
+            "items": ["sword"],
+            "stylized": "Looting"
+        },
+        "loyalty": {
+            "level_max": "3",
+            "weight": "1",
+            "incompatible": ["riptide"],
+            "items": ["trident"],
+            "stylized": "Loyalty"
+        },
+        "mending": {
+            "level_max": "1",
+            "weight": "2",
+            "incompatible": [],
+            "items": ["sword", "trident"],
+            "stylized": "Mending"
+        },
+        "riptide": {
+            "level_max": "3",
+            "weight": "2",
+            "incompatible": ["channeling", "loyalty"],
+            "items": ["trident"],
+            "stylized": "Riptide"
+        },
+        "sharpness": {
+            "level_max": "5",
+            "weight": "1",
+            "incompatible": ["bane_of_arthropods", "smite"],
+            "items": ["sword"],
+            "stylized": "Sharpness"
+        },
+        "smite": {
+            "level_max": "5",
+            "weight": "1",
+            "incompatible": ["bane_of_arthropods", "sharpness"],
+            "items": ["sword"],
+            "stylized": "Smite"
+        },
+        "sweeping": {
+            "level_max": "3",
+            "weight": "2",
+            "incompatible": [],
+            "items": ["sword"],
+            "stylized": "Sweeping Edge"
+        },
+        "unbreaking": {
+            "level_max": "3",
+            "weight": "1",
+            "incompatible": [],
+            "items": ["sword", "trident"],
+            "stylized": "Unbreaking"
+        },
+        "vanishing_curse": {
+            "level_max": "1",
+            "weight": "4",
+            "incompatible": [],
+            "items": ["sword", "trident"],
+            "stylized": "Curse of Vanishing"
+        }
+    },
+    "items": {
+        "sword": { "stylized": "Sword" },
+        "trident": { "stylized": "Trident" }
+    },
+    "other": {
+        "maximum_merge_levels": 39
+    },
+    "layout": {
+        "combat": {
+            "stylized": "Combat",
+            "items": ["sword", "trident"]
+        }
+    }
+}

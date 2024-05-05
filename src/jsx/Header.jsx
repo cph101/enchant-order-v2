@@ -1,6 +1,7 @@
 import React from "react";
 import Settings from "./Settings.jsx";
 import ItemSelect from "./ItemSelect.jsx";
+import ModpackSelect from "./ModpackSelect.jsx";
 
 export default function Header() {
     return (
@@ -12,6 +13,7 @@ export default function Header() {
             </div>
             <div className="flex-none m-5 mt-3">
                 <ItemSelect />
+                <ModpackSelect />
                 <Settings />
             </div>
         </div>

@@ -44,6 +44,13 @@ export class Metadata {
         return enchantment2weight;
     }
 
+    static getFirstItemNamespaceInLayout() {
+        const tabs_metadata = Object.values(Metadata.layout);
+        const first_tab_metadata = tabs_metadata[0];
+        const item_namespaces_in_tab = first_tab_metadata["items"];
+        return item_namespaces_in_tab[0];
+    }
+
     static itemToEnchantmentNames(item_namespace) {
         if (!Metadata.modpackIsLoaded) return [];
 

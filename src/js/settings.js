@@ -1,4 +1,4 @@
-import { update as updateMetadata } from "../js/Data.js";
+import { update as updateMetadata, Metadata } from "../js/Data.js";
 
 export class Settings {
     static defaultSettings = {
@@ -13,6 +13,7 @@ export class Settings {
         const savedSettings = localStorage.getItem("settings");
         Settings.settings = savedSettings ? JSON.parse(savedSettings) : { ...Settings.defaultSettings };
         refreshAll();
+        resetSettings();
     }
 
     static getSelectedItem() {
@@ -71,12 +72,14 @@ function refreshSelectedItem() {
     document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
     document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantSelect"));
 }
-function refreshSelectedModpack() {
+async function refreshSelectedModpack() {
     const modpack_name = Settings.getSelectedModpack();
-    const modpack_filepath = "./json/" + modpack_name + ".json";
-    fetch(modpack_filepath)
+    const modpack_filepath = "./modpacks/" + modpack_name + ".json";
+    await fetch(modpack_filepath)
         .then((response) => response.json())
         .then(updateMetadata);
+
+    Settings.setSelectedItem(Metadata.getFirstItemNamespaceInLayout());
     refreshSelectedItem();
 }
 function refreshSelectedTab() {

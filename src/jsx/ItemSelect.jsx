@@ -23,11 +23,11 @@ export default function ItemSelect() {
 function generateItemSelectors(tab2item_namespaces) {
     const selected_item_namespace = Settings.getSelectedItem();
     const selected_item_section = generateSelectedItemDisplay(selected_item_namespace);
-    const tab_section = generateTabPage(tab2item_namespaces);
+    const tab_page = generateTabPage(tab2item_namespaces);
     return (
         <div id="itemSelect" className="dropdown">
             {selected_item_section}
-            {tab_section}
+            {tab_page}
         </div>
     );
 }
