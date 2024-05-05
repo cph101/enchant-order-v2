@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "css": "npx tailwindcss -i ./tailwindsource.css -o ./src/tailwind.css"
+    "css": "npx tailwindcss -i ./tailwindsource.css -o ./src/css/tailwind.css"
   },
   "keywords": [],
   "author": "",

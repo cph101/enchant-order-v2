@@ -3,6 +3,7 @@ import { Settings } from "../js/settings.js";
 import { Metadata } from "../js/Data.js";
 import LoadDetector from "./LoadDetector.jsx";
 import * as translator from "../js/translation.js";
+import { isWhiteSpaceSingleLine } from "typescript";
 
 function useForceUpdate() {
     const [value, setValue] = useState(0);
@@ -31,9 +32,25 @@ function generateEnchantmentSelectors(modpack_is_loaded, enchantent_namespaces) 
 
 function generateEnchantmentSelector(enchantment_namespace) {
     const key = Math.random();
+    const maxLevel = Metadata.enchantmentToMaxLevel(enchantment_namespace);
+    const singleLevel = maxLevel == 1;
+
     return (
-        <div key={key} className="enchcard text-center">
+        <div key={key} className="p-2 rounded-[10px] text-center bg-[--foreobject]">
             <span data-trnskey={"enchants." + enchantment_namespace}>Loading...</span>
+            <br />
+            <div className="flex">
+                {Array.from({ length: maxLevel }, (a, index) => (
+                    <div className={`rounded-[4px] text-center flex-auto p-[2px] mx-[0.7px]`} key={index + 1}
+                     style={{
+                        backgroundColor: `rgba(0, 0, 0, ${singleLevel ? 0.09 : 0.14})`
+                     }}>
+                        <span style={{
+                            opacity: singleLevel ? "0.5" : "1"
+                        }}>{singleLevel ? "Single level" : index + 1}</span>
+                    </div>
+                ))}
+            </div>
             <LoadDetector callback={translator.searchForComponents} />
         </div>
     );

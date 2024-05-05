@@ -44,6 +44,13 @@ export class Metadata {
         return enchantment2weight;
     }
 
+    static enchantmentToMaxLevel(enchantment_namespace) {
+        const enchantments_metadata = Metadata.enchantments;
+
+        const enchantment_metadata = enchantments_metadata[enchantment_namespace];
+        return enchantment_metadata["level_max"];
+    }
+
     static itemToEnchantmentNames(item_namespace) {
         if (!Metadata.modpackIsLoaded) return [];
 

@@ -79,8 +79,8 @@ function generateSelectedItemDisplay(item_namespace) {
 }
 function generateItemSelector(item_namespace) {
     if (item_namespace == "-") return <div key={item_namespace} className="divider" />;
-    // if (item_namespace == Settings.getSelectedItem()) return <div key={item_namespace} />;
-
+    if (item_namespace == Settings.getSelectedItem()) return;
+    
     const item_name = Metadata.itemNamespaceToName(item_namespace);
     const item_icon = generateItemIcon(item_namespace);
     const on_click = itemOnClickFunction(item_namespace);
