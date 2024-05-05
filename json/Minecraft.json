@@ -365,7 +365,8 @@
         "flint_and_steel": { "stylized": "Flint & Steel" },
         "carrot_on_a_stick": { "stylized": "Carrot on a Stick" },
         "warped_fungus_on_a_stick": { "stylized": "Warped Fungus on a Stick" },
-        "pumpkin": { "stylized": "Pumpkin" }
+        "pumpkin": { "stylized": "Pumpkin" },
+        "mace": { "stylized": "Mace" }
     },
     "other": {
         "maximum_merge_levels": 39
@@ -375,6 +376,7 @@
             "stylized": "Combat",
             "items": [
                 "sword",
+                "mace",
                 "trident",
                 "axe",
                 "bow",
