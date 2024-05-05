@@ -2945,6 +2945,10 @@ input.tab:checked + .tab-content,
   top: 0.5rem;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .z-\[1\] {
   z-index: 1;
 }
@@ -2961,6 +2965,10 @@ input.tab:checked + .tab-content,
   margin: 1.25rem;
 }
 
+.m-auto {
+  margin: auto;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -2974,6 +2982,26 @@ input.tab:checked + .tab-content,
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.mx-\[0\.3px\] {
+  margin-left: 0.3px;
+  margin-right: 0.3px;
+}
+
+.mx-\[0\.5px\] {
+  margin-left: 0.5px;
+  margin-right: 0.5px;
+}
+
+.mx-\[0\.7px\] {
+  margin-left: 0.7px;
+  margin-right: 0.7px;
 }
 
 .ml-2 {
@@ -2998,6 +3026,10 @@ input.tab:checked + .tab-content,
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .block {
@@ -3048,6 +3080,10 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .w-52 {
   width: 13rem;
 }
@@ -3076,6 +3112,10 @@ input.tab:checked + .tab-content,
   flex: none;
 }
 
+.flex-auto {
+  flex: 1 1 auto;
+}
+
 .resize {
   resize: both;
 }
@@ -3100,6 +3140,14 @@ input.tab:checked + .tab-content,
   overflow-x: auto;
 }
 
+.rounded-\[10px\] {
+  border-radius: 10px;
+}
+
+.rounded-\[2px\] {
+  border-radius: 2px;
+}
+
 .rounded-box {
   border-radius: var(--rounded-box, 1rem);
 }
@@ -3108,8 +3156,24 @@ input.tab:checked + .tab-content,
   border-radius: 9999px;
 }
 
+.rounded-\[\] {
+  border-radius: ;
+}
+
+.rounded-\[4px\] {
+  border-radius: 4px;
+}
+
 .border {
   border-width: 1px;
+}
+
+.bg-\[--foreobject\] {
+  background-color: var(--foreobject);
+}
+
+.bg-\[rgba\(0\2c 0\2c 0\2c 0\.14\)\] {
+  background-color: rgba(0,0,0,0.14);
 }
 
 .bg-base-100 {
@@ -3117,8 +3181,24 @@ input.tab:checked + .tab-content,
   background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
 }
 
+.bg-\[rgba\(0\2c 0\2c 0\2c \$\{0\.14\}\)\] {
+  background-color: rgba(0,0,0,${0.14});
+}
+
+.bg-\[rgba\(0\2c 0\2c 0\2c \$\{singleLevel0\.14\}\)\] {
+  background-color: rgba(0,0,0,${singleLevel0.14});
+}
+
+.bg-\[rgba\(0\2c 0\2c 0\2c \$\{\}\)\] {
+  background-color: rgba(0,0,0,${});
+}
+
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-\[2px\] {
+  padding: 2px;
 }
 
 .px-7 {
@@ -3128,6 +3208,10 @@ input.tab:checked + .tab-content,
 
 .text-center {
   text-align: center;
+}
+
+.align-bottom {
+  vertical-align: bottom;
 }
 
 .text-2xl {
@@ -3151,6 +3235,21 @@ input.tab:checked + .tab-content,
 
 .italic {
   font-style: italic;
+}
+
+.text-base-100 {
+  --tw-text-opacity: 1;
+  color: var(--fallback-b1,oklch(var(--b1)/var(--tw-text-opacity)));
+}
+
+.text-base-300 {
+  --tw-text-opacity: 1;
+  color: var(--fallback-b3,oklch(var(--b3)/var(--tw-text-opacity)));
+}
+
+.text-neutral {
+  --tw-text-opacity: 1;
+  color: var(--fallback-n,oklch(var(--n)/var(--tw-text-opacity)));
 }
 
 .opacity-30 {

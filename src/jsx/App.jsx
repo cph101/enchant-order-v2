@@ -1,9 +1,9 @@
-import "../js/jquery-3.7.1.min.js";
-import Header from "./Header.jsx";
+import Footer from "./Footer";
 import Content from "./Content.jsx";
-import Footer from "./Footer.jsx";
-import LoadDetector from "./LoadDetector.jsx";
-import * as translator from "../js/translation.js";
+import Header from "./Header";
+import "../js/jquery-3.7.1.min.js";
+import * as translator from "../js/translation";
+import LoadDetector from "./LoadDetector";
 
 // <span data-trnskey="translation_key">Usage</span>
 

@@ -357,6 +357,7 @@
         "helmet": { "stylized": "Helmet" },
         "hoe": { "stylized": "Hoe" },
         "leggings": { "stylized": "Leggings" },
+        "mace": { "stylized": "Mace" },
         "pickaxe": { "stylized": "Pickaxe" },
         "pumpkin": { "stylized": "Pumpkin" },
         "shears": { "stylized": "Shears" },
@@ -375,6 +376,7 @@
             "stylized": "Combat",
             "items": [
                 "sword",
+                "mace",
                 "trident",
                 "axe",
                 "bow",

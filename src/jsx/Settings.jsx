@@ -23,7 +23,7 @@ export default function Settings() {
             <dialog id="mainSettings" className="modal">
                 <div className="modal-box max-w-md">
                     <form method="dialog">
-                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        <button className="btn-sm btn-ghost btn-circle absolute right-2 top-2 bg-[rgba(0,0,0,0.14)]">✕</button>
                     </form>
                     <h3 className="font-bold text-lg">
                         <span data-trnskey="settings">Loading...</span>

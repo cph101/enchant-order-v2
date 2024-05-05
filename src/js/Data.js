@@ -55,6 +55,12 @@ export class Metadata {
         return item_namespaces_in_tab[0];
     }
 
+    static enchantmentNamespaceToMaxLevel(enchantment_namespace) {
+        const enchantments_metadata = Metadata.enchantments;
+        const enchantment_metadata = enchantments_metadata[enchantment_namespace];
+        return parseInt(enchantment_metadata["level_max"]);
+    }
+
     static itemToEnchantmentNames(item_namespace) {
         if (!Metadata.modpackIsLoaded) return [];
 
