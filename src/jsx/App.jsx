@@ -4,6 +4,7 @@ import Content from "./Content.jsx";
 import Footer from "./Footer.jsx";
 import LoadDetector from "./LoadDetector.jsx";
 import * as translator from "../js/translation.js";
+import {Settings} from "../js/settings.js";
 
 // <span data-trnskey="translation_key">Usage</span>
 
@@ -21,6 +22,6 @@ export default function App() {
 async function onLoad() {
     await translator.setupLanguage();
     document.documentElement.classList.add("finishedLoading");
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemRender"));
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantRender"));
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantSelect"));
 }

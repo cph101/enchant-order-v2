@@ -1,4 +1,5 @@
 import { update as updateMetadata } from "../js/Data.js";
+
 export class Settings {
     static defaultSettings = {
         selectedItem: "sword",
@@ -11,7 +12,7 @@ export class Settings {
     static loadSettings() {
         const savedSettings = localStorage.getItem("settings");
         Settings.settings = savedSettings ? JSON.parse(savedSettings) : { ...Settings.defaultSettings };
-        refreshSettings();
+        refreshAll();
     }
 
     static getSelectedItem() {
@@ -56,19 +57,19 @@ function saveSettings() {
 }
 function resetSettings() {
     Settings.settings = Settings.defaultSettings;
-    refreshSettings();
+    refreshAll();
     saveSettings();
 }
-function refreshSettings() {
-    refreshSelectedItem();
+function refreshAll() {
     refreshSelectedModpack();
+    refreshSelectedItem();
     refreshSelectedTab();
     refreshTheme();
 }
 
 function refreshSelectedItem() {
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemRender"));
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantRender"));
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantSelect"));
 }
 function refreshSelectedModpack() {
     const modpack_name = Settings.getSelectedModpack();
@@ -76,8 +77,9 @@ function refreshSelectedModpack() {
     fetch(modpack_filepath)
         .then((response) => response.json())
         .then(updateMetadata);
+    refreshSelectedItem();
 }
 function refreshSelectedTab() {
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemRender"));
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
 }
 function refreshTheme() {}
