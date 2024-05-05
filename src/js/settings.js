@@ -79,10 +79,20 @@ async function refreshSelectedModpack() {
         .then((response) => response.json())
         .then(updateMetadata);
 
-    Settings.setSelectedItem(Metadata.getFirstItemNamespaceInLayout());
+    refreshItemAfterModpack(Settings.getSelectedItem());
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshModpackSelect"));
     refreshSelectedItem();
 }
 function refreshSelectedTab() {
     document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
 }
 function refreshTheme() {}
+
+function refreshItemAfterModpack(previous_item_namespace) {
+    const item_namespaces = Metadata.getItemNamespaces();
+    const new_modpack_has_item = !item_namespaces.includes(previous_item_namespace);
+    if (new_modpack_has_item) {
+        const new_item_namespace = Metadata.getFirstItemNamespaceInLayout();
+        Settings.setSelectedItem(new_item_namespace);
+    }
+}

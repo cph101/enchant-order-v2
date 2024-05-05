@@ -11,8 +11,8 @@ export default function ModpackSelect() {
     const forceUpdate = useForceUpdate();
     document.documentElement.addEventListener("RefreshModpackSelect", forceUpdate);
 
+    const modpack_namespaces = ["Minecraft", "Sword-Trident"];
     const modpack_is_loaded = Metadata.modpackIsLoaded;
-    const modpack_namespaces = ["Minecraft", "Minecraft copy"];
     return (
         <div id="modpackSelect" className="dropdown">
             {modpack_is_loaded ? generateModpackSelectors(modpack_namespaces) : ""}
@@ -21,15 +21,15 @@ export default function ModpackSelect() {
 }
 
 function generateModpackSelectors(modpack_namespaces) {
+    const selected_modpack_namespace = Settings.getSelectedModpack();
+    const selected_modpack_section = generateSelectedModpackDisplay(selected_modpack_namespace);
     const modpack_bullets = modpack_namespaces.map(generateModpackSelector);
     return (
         <div id="modpackSelect" className="dropdown">
-            <div tabIndex={0} role="button" className="btn m-1 bg-foreobject">
-                {modpack_namespaces[0]}
-                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-foreobject rounded-box w-52">
-                    {modpack_bullets}
-                </ul>
-            </div>
+            {selected_modpack_section}
+            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-foreobject rounded-box w-52">
+                {modpack_bullets}
+            </ul>
         </div>
     );
 }
@@ -50,4 +50,13 @@ function modpackOnClickFunction(modpack_namespace) {
     return () => {
         Settings.setSelectedModpack(modpack_namespace);
     };
+}
+
+function generateSelectedModpackDisplay(modpack_namespace) {
+    const modpack_name = modpack_namespace;
+    return (
+        <div tabIndex={0} role="button" className="btn m-1 bg-foreobject">
+            {modpack_name}
+        </div>
+    );
 }

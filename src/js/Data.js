@@ -44,6 +44,10 @@ export class Metadata {
         return enchantment2weight;
     }
 
+    static getItemNamespaces() {
+        return Object.keys(Metadata.items);
+    }
+
     static getFirstItemNamespaceInLayout() {
         const tabs_metadata = Object.values(Metadata.layout);
         const first_tab_metadata = tabs_metadata[0];

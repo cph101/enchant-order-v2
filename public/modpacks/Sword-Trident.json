@@ -1,5 +1,12 @@
 {
     "enchantments": {
+        "bane_of_arthropods": {
+            "level_max": "5",
+            "weight": "1",
+            "incompatible": ["smite", "sharpness"],
+            "items": ["sword", "axe"],
+            "stylized": "Bane of Arthropods"
+        },
         "channeling": {
             "level_max": "1",
             "weight": "4",
