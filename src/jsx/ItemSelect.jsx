@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { Settings } from "../js/settings.js";
 import { Metadata } from "../js/Data.js";
 

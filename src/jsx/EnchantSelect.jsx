@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import { Settings } from "../js/settings.js";
 import { Metadata } from "../js/Data.js";
 import LoadDetector from "./LoadDetector.jsx";
