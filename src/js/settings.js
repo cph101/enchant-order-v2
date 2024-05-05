@@ -10,7 +10,6 @@ export class Settings {
     static loadSettings() {
         const savedSettings = localStorage.getItem("settings");
         Settings.settings = savedSettings ? JSON.parse(savedSettings) : { ...Settings.defaultSettings };
-        Settings.resetSettings();
     }
 
     static saveSettings() {
