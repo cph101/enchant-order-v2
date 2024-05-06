@@ -1,8 +1,8 @@
 import { MergedItem, Hash } from "./Item.js";
 
 export class BestItem {
-    constructor(definition, heuristic_splits = 0) {
-        this.heuristic_splits = heuristic_splits;
+    constructor(definition, premerge_count = 0) {
+        this.premerge_count = premerge_count;
         this.definition = definition;
         this.memory = {};
         this.memory_check_count = [];
@@ -96,31 +96,63 @@ export class BestItem {
 }
 
 function preparedItems(items, best_itemer) {
-    const heuristic_count = best_itemer.heuristic_splits;
-    for (let layer = 0; layer < heuristic_count; ++layer) {
-        items = premergedItems(items, best_itemer);
+    const item_count = items.length;
+    const total_merge_count = best_itemer.premerge_count;
+    let merge_count_remaining = total_merge_count;
+
+    while (merge_count_remaining >= 1) {
+        items = premergedItems(items, best_itemer, merge_count_remaining);
+        merge_count_remaining = total_merge_count - (item_count - items.length);
     }
 
     return items;
 }
 
-function premergedItems(items, best_itemer) {
-    items = items.sort((item1, item2) => item1.enchantmentCost() - item2.enchantmentCost());
-
-    const item_count = items.length;
-    const max_index = (item_count - 1) / 2;
+function premergedItems(items, best_itemer, merge_count_remaining = -1) {
+    items = items.sort(costDifference);
+    if (merge_count_remaining === -1) merge_count_remaining = (items.length - 1) / 2;
     var merged_items = [];
 
-    for (let index = 0; index < max_index; ++index) {
-        const last_index = item_count - 1 - index;
-        const item1 = items[index];
-        const item2 = items[last_index];
-        const merged_item = best_itemer.fromList([item1, item2])[0];
-        const new_item = index === last_index ? item1 : merged_item;
-        merged_items.push(new_item);
+    const work2items = Group.byPriorWork(items);
+    const prior_works = Object.keys(work2items).sort().reverse();
+    const prior_work_count = prior_works.length;
+
+    for (let work_index = 0; work_index < prior_work_count; ++work_index) {
+        const prior_work = prior_works[work_index];
+        const items_at_work = work2items[prior_work].sort(costDifference);
+        while (merge_count_remaining >= 1 && items_at_work.length >= 2) {
+            const items_to_merge = [items_at_work.shift(), items_at_work.pop()];
+            const merged_item = best_itemer.fromList(items_to_merge)[0];
+            merged_items.push(merged_item);
+            --merge_count_remaining;
+        }
+        if (merge_count_remaining == 0) break;
     }
 
+    const remaining_items = remainingElements(work2items).sort(priorWorkThenCost);
+    while (merge_count_remaining >= 1 && remaining_items.length >= 2) {
+        const items_to_merge = [remaining_items.shift(), remaining_items.shift()];
+        const merged_item = best_itemer.fromList(items_to_merge)[0];
+        merged_items.push(merged_item);
+        --merge_count_remaining;
+    }
+
+    merged_items = merged_items.concat(remaining_items);
     return merged_items;
+}
+
+function priorWorkThenCost(item1, item2) {
+    const work_difference = priorWorkDifference(item1, item2);
+    if (work_difference !== 0) return work_difference;
+    return costDifference(item1, item2);
+}
+
+function costDifference(item1, item2) {
+    return item1.getRawCost() - item2.getRawCost();
+}
+
+function priorWorkDifference(item1, item2) {
+    return item1.getPriorWork() - item2.getPriorWork();
 }
 
 function combinations(set, subset_size) {
@@ -331,4 +363,18 @@ function pushToDictionary(value, key, key2values) {
     const is_new_key = !Object.keys(key2values).includes(key);
     if (is_new_key) key2values[key] = [];
     key2values[key].push(value);
+}
+
+function remainingElements(key2array) {
+    const keys = Object.keys(key2array);
+    const key_count = keys.length;
+    let remaining_elements = [];
+
+    for (let key_index = 0; key_index < key_count; ++key_index) {
+        const key = keys[key_index];
+        const array = key2array[key];
+        while (array.length >= 1) remaining_elements.push(array.pop());
+    }
+
+    return remaining_elements;
 }

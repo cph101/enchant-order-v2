@@ -205,7 +205,7 @@ class Item {
         return Hash.toEnchantmentList(this.getEnchantmentsHash());
     }
 
-    enchantmentCost() {
+    getRawCost() {
         return this.getEnchantmentList().reduce((cost, enchantment_obj) => cost + enchantment_obj.cost, 0);
     }
 
