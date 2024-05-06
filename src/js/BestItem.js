@@ -5,11 +5,17 @@ export class BestItem {
         this.heuristic_splits = heuristic_splits;
         this.definition = definition;
         this.memory = {};
-        this.memory_check_count = 0;
+        this.memory_check_count = [];
+        this.progress = 0;
+        this.total_item_count = 0;
     }
 
     calculate(items) {
         items = preparedItems(items, this);
+        const item_count = items.length;
+        this.total_item_count = item_count;
+        this.progress = 0;
+        this.memory_check_count = new Array(item_count + 1).fill(0);
         const candidates = this.fromList(items);
         return candidates;
     }
@@ -63,9 +69,9 @@ export class BestItem {
     }
 
     fromList(items) {
+        this.updateProgress(items.length);
         const items_hash = Hash.fromItems(items);
         const from_memory = this.memory[items_hash];
-        this.memory_check_count++;
         if (from_memory !== undefined) return from_memory;
 
         const definition = this.definition;
@@ -74,6 +80,18 @@ export class BestItem {
         candidates = RemoveDuplicatesBy.priorWorkAfterHash(candidates, definition);
         this.memory[items_hash] = candidates;
         return candidates;
+    }
+
+    updateProgress(item_count) {
+        const total_item_count = this.total_item_count;
+        this.memory_check_count[item_count]++;
+
+        if (item_count === total_item_count) {
+            this.progress = 1;
+        } else if (item_count === total_item_count - 1) {
+            const checks_count = this.memory_check_count[item_count];
+            this.progress = checks_count / total_item_count;
+        }
     }
 }
 
