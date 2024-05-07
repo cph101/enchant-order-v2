@@ -21,7 +21,7 @@ export default function EnchantSelect() {
 function generateEnchantmentSelectors(modpack_is_loaded, enchantent_namespaces) {
     return (
         <div>
-            <div className="grid grid-cols-8 md:grid-cols-8 grid-rows-3 md:grid-rows-2 gap-3 mx-auto h-[35%]">
+            <div className="grid grid-cols-7 grid-rows-4 gap-4 mx-auto h-[35%]">
                 {modpack_is_loaded ? enchantent_namespaces.map(generateEnchantmentSelector) : <p>Loading...</p>}
             </div>
         </div>
@@ -32,11 +32,20 @@ function generateEnchantmentSelector(enchantment_namespace) {
     const enchantment_name = Metadata.enchantmentNamespaceToName(enchantment_namespace);
     const key = Math.random();
     return (
-        <div key={key} className="p-2 rounded-[10px] text-center bg-[--foreobject]">
-            {enchantment_name}
+        <div key={key} className="p-2 rounded-[10px] text-center bg-[--foreobject] flex flex-col enchant-selected">
+            {generateSpacerOrNotFor(enchantment_namespace)}
+            <span className="py-2">{enchantment_name}</span>
+            <div className="grow" />
             {generateLevelSelectors(enchantment_namespace)}
         </div>
     );
+}
+
+function generateSpacerOrNotFor(enchantment_namespace, inverted = false) {
+    const maxLevel = Metadata.enchantmentNamespaceToMaxLevel(enchantment_namespace);
+    if (inverted ? maxLevel == 1 : maxLevel != 1) return "";
+
+    return <div className="grow" />
 }
 
 function generateLevelSelectors(enchantment_namespace) {

@@ -115,3 +115,7 @@
 .itemSelectTab {
   font-family: sans-serif;
 }
+
+.enchant-selected {
+  box-shadow: 0px 0px 9px 0px oklch(var(--a) / .7);
+}

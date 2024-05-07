@@ -34,7 +34,7 @@ function generateModpackSelectors(modpack_namespaces) {
     );
 }
 function generateModpackSelector(modpack_namespace) {
-    // if (modpack_namespace == Settings.getSelectedModpack()) return <div key={modpack_namespace} />;
+    // if (modpack_namespace == Settings.getSelectedModpack()) return null;
 
     const modpack_name = modpack_namespace;
     const on_click = modpackOnClickFunction(modpack_namespace);

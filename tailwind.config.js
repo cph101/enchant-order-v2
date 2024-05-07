@@ -43,6 +43,7 @@ export default {
           ".text-link": {
             color: "#66b3ff",
           },
+          accent: "76.11% 0.1346 256.91"
         },
       },
     ],

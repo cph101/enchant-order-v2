@@ -4,7 +4,7 @@ import { BestItem } from "../js/BestItem.js";
 
 Settings.loadSettings();
 
-const item_filepath = "./public/examples/god_boots+.json"; // filepath for JSON file with enchanted items to be merged
+const item_filepath = "/examples/god_boots+.json"; // filepath for JSON file with enchanted items to be merged
 fetch(item_filepath)
     .then((response) => response.json())
     .then(findOptimalCombination); // find optimal combo for given list of items
