@@ -24,4 +24,5 @@ async function onLoad() {
     document.documentElement.dispatchEvent(new CustomEvent("RefreshModpackSelect"));
     document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
     document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantSelect"));
+    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemDisplay"));
 }
