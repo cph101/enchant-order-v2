@@ -14,7 +14,7 @@ export default function ItemSelect() {
     const tab2item_namespaces = Metadata.getLayout();
     const modpack_is_loaded = Metadata.modpackIsLoaded;
     return (
-        <div id="itemSelect" className="dropdown">
+        <div>
             {modpack_is_loaded ? generateItemSelectors(tab2item_namespaces) : ""}
         </div>
     );

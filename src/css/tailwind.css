@@ -3051,6 +3051,10 @@ input.tab:checked + .tab-content,
   height: 35%;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .w-52 {
   width: 13rem;
 }
