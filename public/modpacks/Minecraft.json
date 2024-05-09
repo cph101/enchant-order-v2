@@ -307,7 +307,7 @@
             "level_max": "1",
             "weight": "4",
             "incompatible": [],
-            "items": ["helmet", "chestplate", "leggings", "boots", "elytra", "pumpkin", "helmet", "turtle_shell"],
+            "items": ["helmet", "chestplate", "leggings", "boots", "elytra", "pumpkin", "turtle_shell"],
             "stylized": "Curse of Binding"
         },
         "vanishing_curse": {
@@ -334,7 +334,6 @@
                 "shield",
                 "elytra",
                 "pumpkin",
-                "helmet",
                 "trident",
                 "turtle_shell",
                 "crossbow"
