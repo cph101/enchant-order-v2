@@ -1,3 +1,5 @@
+import { timSort } from "./timsort.js";
+
 export class Metadata {
     static setMaximumMergeLevels(levels) {
         MergedItem.MAXMIMUM_MERGE_LEVELS = levels;
@@ -72,9 +74,12 @@ export class Hash {
     }
 
     static fromItems(items) {
-        const hash = items
-            .map((item) => item.hash)
-            .sort()
+        // const hash = items
+        // .map((item) => item.hash)
+        // .sort()
+        // .reduce((previous_hash, hash) => previous_hash + hash + " ", "");
+        let hash = items.map((item) => item.hash);
+        hash = timSort(hash) //
             .reduce((previous_hash, hash) => previous_hash + hash + " ", "");
         return hash;
     }
