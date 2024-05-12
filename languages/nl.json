@@ -49,6 +49,9 @@
     "marcicredit": "Werkte aan het rekenmachine-algoritme",
     "cphcredit": "Herschikte de UI en overgezet naar React",
 
+    "errors": {
+        "noenchantsfound": "Geen betoveringen was gevind voor item \"{0}\" in modpak \"{1}\""
+    },
 
     "items":{
         "helmet": "Helm",
