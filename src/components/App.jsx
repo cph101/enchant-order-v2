@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import Content from "./Content";
 import Header from "./Header";
-import * as translator from "../scripts/Translation";
+import { Translator } from "../scripts/Translator";
 import LoadDetector from "./LoadDetector";
 import { ToastContainer } from "react-toastify";
 
@@ -18,7 +18,7 @@ export default function App() {
 }
 
 async function onLoad() {
-    await translator.setupLanguage();
+    await Translator.setupLanguage();
     document.documentElement.classList.add("finishedLoading");
     document.documentElement.dispatchEvent(new CustomEvent("RefreshModpackSelect"));
     document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));

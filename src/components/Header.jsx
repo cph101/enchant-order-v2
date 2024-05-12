@@ -2,6 +2,7 @@ import React from "react";
 import Settings from "./Settings";
 import ItemSelect from "./ItemSelect";
 import ModpackSelect from "./ModpackSelect";
+import { Translator } from "../scripts/Translator";
 
 export default function Header() {
     return (

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Settings } from "../scripts/Settings";
 import { Metadata } from "../scripts/Data";
 import { Slide, toast } from "react-toastify";
-import { getTranslationUnsafe } from "../scripts/Translation";
+import { Translator } from "../scripts/Translator";
 import { GeneralUtil } from "../scripts/GeneralUtil";
 
 function useForceUpdate() {
@@ -105,7 +105,7 @@ function itemOnClickFunction(item_namespace) {
     const errorTextFallback = "No enchants were found for item \"{0}\" in modpack \"{1}\"";
 
     const wouldBeErrorText = GeneralUtil.formatString(
-        getTranslationUnsafe("errors.noenchantsfound", errorTextFallback), 
+        Translator.getTranslationUnsafe("errors.noenchantsfound", errorTextFallback), 
         itemActualName, modpackName);
 
     return () => {
