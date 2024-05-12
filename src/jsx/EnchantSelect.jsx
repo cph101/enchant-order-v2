@@ -13,16 +13,16 @@ export default function EnchantSelect() {
     document.documentElement.addEventListener("RefreshEnchantSelect", forceUpdate);
 
     const item_namespace = Settings.getSelectedItem();
-    const enchantent_namespaces = Metadata.itemToEnchantmentNames(item_namespace);
+    const enchantment_namespaces = Metadata.itemToEnchantmentNames(item_namespace);
     const modpack_is_loaded = Metadata.modpackIsLoaded;
-    return generateEnchantmentSelectors(modpack_is_loaded, enchantent_namespaces);
+    return generateEnchantmentSelectorContainer(modpack_is_loaded, enchantment_namespaces);
 }
 
-function generateEnchantmentSelectors(modpack_is_loaded, enchantent_namespaces) {
+function generateEnchantmentSelectorContainer(modpack_is_loaded, enchantment_namespaces) {
     return (
         <div>
             <div className="grid grid-cols-7 grid-rows-4 gap-4 mx-auto h-[35%]">
-                {modpack_is_loaded ? enchantent_namespaces.map(generateEnchantmentSelector) : <p>Loading...</p>}
+                {modpack_is_loaded ? enchantment_namespaces.map(generateEnchantmentSelector) : <p>Loading...</p>}
             </div>
         </div>
     );

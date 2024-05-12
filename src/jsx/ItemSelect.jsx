@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Settings } from "../js/settings.js";
 import { Metadata } from "../js/Data.js";
+import { Slide, toast } from "react-toastify";
+import { getTranslationUnsafe } from "../js/translation.js";
+import { GeneralUtil } from "../js/GeneralUtil.js";
 
 function useForceUpdate() {
     const [value, setValue] = useState(0);
@@ -93,11 +96,34 @@ function generateItemSelector(item_namespace) {
         </li>
     );
 }
+
 function itemOnClickFunction(item_namespace) {
+
+    const itemActualName = Metadata.itemNamespaceToName(item_namespace);
+    const modpackName = Settings.getSelectedModpack();
+
+    const errorTextFallback = "No enchants were found for item \"{0}\" in modpack \"{1}\"";
+
+    const wouldBeErrorText = GeneralUtil.formatString(
+        getTranslationUnsafe("errors.noenchantsfound", errorTextFallback), 
+        itemActualName, modpackName);
+
     return () => {
-        Settings.setSelectedItem(item_namespace);
+        if (Metadata.itemToEnchantmentNames(item_namespace).length == 0) {
+            toast.error(wouldBeErrorText, {
+                position: "bottom-right",
+                closeOnClick: false,
+                draggable: false,
+                theme: "colored",
+                transition: Slide,
+                closeButton: false,
+                icon: <ion-icon name="warning-outline" class="ionicon-xl"></ion-icon>,
+                className: "enchants-not-found-toast"
+                });
+        } else Settings.setSelectedItem(item_namespace);
     };
 }
+
 function generateItemIcon(item_namespace) {
     const icon_filepath = "/enchant-order-v2/images/" + item_namespace + ".gif";
     const item_icon = <img src={icon_filepath} className="itemSelectImage" />;
@@ -106,6 +132,6 @@ function generateItemIcon(item_namespace) {
 
 function generateTabClassNames(tab_namespace) {
     const selected_tab_namespace = Settings.getSelectedTab();
-    if (selected_tab_namespace == tab_namespace) return "tab tab-selected itemSelectTab";
-    return "tab itemSelectTab";
+    if (selected_tab_namespace == tab_namespace) return "tab tab-selected item-select-tab";
+    return "tab item-select-tab";
 }

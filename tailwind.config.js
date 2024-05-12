@@ -33,7 +33,7 @@ export default {
           info: "#0089ff",
           success: "#006666",
           warning: "#ff9400",
-          error: "#ff284a",
+          error: "#ffffff",
           secondary: "#672741",
           "--foreobject": "#4d1d31",
           ".btn:hover": {

@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Settings() {
+
+    const [criticalSettingChanged, setChangeCritSetting] = useState(false);
+
+    const refreshIfNecessary = () => {
+        if (criticalSettingChanged) window.location.reload();
+    }
+
     return (
         <main>
             <button className="btn bg-foreobject" onClick={() => document.getElementById("mainSettings").showModal()}>
@@ -23,7 +30,7 @@ export default function Settings() {
             <dialog id="mainSettings" className="modal">
                 <div className="modal-box max-w-md">
                     <form method="dialog">
-                        <button className="btn-sm btn-ghost btn-circle absolute right-2 top-2 bg-[rgba(0,0,0,0.14)]">✕</button>
+                        <button className="btn-sm btn-ghost btn-circle absolute right-2 top-2 bg-[rgba(0,0,0,0.14)]" onClick={refreshIfNecessary} >✕</button>
                     </form>
                     <h3 className="font-bold text-lg">
                         <span data-trnskey="settings">Loading...</span>
@@ -34,7 +41,7 @@ export default function Settings() {
                                 Loading...
                             </span>
                         </div>
-                        <select data-property="languageSelect" className="select-bordered select w-full max-w-xs" />
+                        <select data-property="languageSelect" className="select-bordered select w-full max-w-xs" onChange={() => setChangeCritSetting(true)} />
                     </div>
                     <div className="overflow-x-auto mt-6">
                         <div className="label">

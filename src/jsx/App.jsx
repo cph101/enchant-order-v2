@@ -4,6 +4,7 @@ import Header from "./Header";
 import "../js/jquery-3.7.1.min.js";
 import * as translator from "../js/translation";
 import LoadDetector from "./LoadDetector";
+import { ToastContainer } from "react-toastify";
 
 // <span data-trnskey="translation_key">Usage</span>
 
@@ -14,6 +15,7 @@ export default function App() {
             <Content />
             <Footer />
             <LoadDetector callback={onLoad} />
+            <ToastContainer />
         </main>
     );
 }

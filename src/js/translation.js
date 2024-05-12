@@ -101,3 +101,14 @@ export function searchForComponents() {
     element.innerHTML = object
   });
 }
+
+export function getTranslationUnsafe(key, fallback = key) {
+  if (key == null) return fallback; // prevent prerender errors
+  var paths = key.split(".");
+    var object = languageJson[paths[0]];
+    for (var i = 1; i < paths.length; i++) {
+      if (object == null) return fallback; // prevent prerender errors #2
+      object = object[paths[i]];
+    }
+    return object;
+}
