@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Settings } from "../js/settings.js";
-import { Metadata } from "../js/Data.js";
+import { Settings } from "../scripts/Settings";
+import { Metadata } from "../scripts/Data";
 
 function useForceUpdate() {
     const [value, setValue] = useState(0);

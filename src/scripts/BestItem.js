@@ -1,4 +1,4 @@
-import { MergedItem, Hash } from "./Item.js";
+import { MergedItem, Hash } from "./Item";
 
 export class BestItem {
     constructor(definition, premerge_count = 0) {

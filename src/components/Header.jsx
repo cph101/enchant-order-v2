@@ -1,7 +1,7 @@
 import React from "react";
-import Settings from "./Settings.jsx";
-import ItemSelect from "./ItemSelect.jsx";
-import ModpackSelect from "./ModpackSelect.jsx";
+import Settings from "./Settings";
+import ItemSelect from "./ItemSelect";
+import ModpackSelect from "./ModpackSelect";
 
 export default function Header() {
     return (

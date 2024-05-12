@@ -1,12 +1,9 @@
 import Footer from "./Footer";
-import Content from "./Content.jsx";
+import Content from "./Content";
 import Header from "./Header";
-import "../js/jquery-3.7.1.min.js";
-import * as translator from "../js/translation";
+import * as translator from "../scripts/Translation";
 import LoadDetector from "./LoadDetector";
 import { ToastContainer } from "react-toastify";
-
-// <span data-trnskey="translation_key">Usage</span>
 
 export default function App() {
     return (

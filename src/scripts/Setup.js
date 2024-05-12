@@ -1,6 +1,6 @@
-import { Settings } from "../js/settings.js";
-import { Json } from "../js/Item.js";
-import { BestItem } from "../js/BestItem.js";
+import { Settings } from "./Settings";
+import { Json } from "./Item";
+import { BestItem } from "./BestItem";
 
 Settings.loadSettings();
 

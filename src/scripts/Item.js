@@ -1,4 +1,4 @@
-import { timSort } from "./timsort.js";
+import { timSort } from "./TimSort";
 
 export class Metadata {
     static setMaximumMergeLevels(levels) {

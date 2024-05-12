@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Metadata } from "../js/Data.js";
+import { Metadata } from "../scripts/Data";
 
 function useForceUpdate() {
     const [value, setValue] = useState(0);

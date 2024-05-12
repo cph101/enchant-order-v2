@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Settings } from "../js/settings.js";
-import { Metadata } from "../js/Data.js";
+import { Settings } from "../scripts/Settings";
+import { Metadata } from "../scripts/Data";
 import { Slide, toast } from "react-toastify";
-import { getTranslationUnsafe } from "../js/translation.js";
-import { GeneralUtil } from "../js/GeneralUtil.js";
+import { getTranslationUnsafe } from "../scripts/Translation";
+import { GeneralUtil } from "../scripts/GeneralUtil";
 
 function useForceUpdate() {
     const [value, setValue] = useState(0);

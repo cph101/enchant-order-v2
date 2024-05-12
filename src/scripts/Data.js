@@ -1,4 +1,4 @@
-import { Metadata as ItemMetadata } from "./Item.js";
+import { Metadata as ItemMetadata } from "./Item";
 
 export function update(data) {
     Metadata.modpackIsLoaded = false;

@@ -1,4 +1,4 @@
-import { update as updateMetadata, Metadata } from "../js/Data.js";
+import { update as updateMetadata, Metadata } from "./Data";
 
 export class Settings {
     static defaultSettings = {
