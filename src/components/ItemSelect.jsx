@@ -110,15 +110,9 @@ function itemOnClickFunction(item_namespace) {
     return () => {
         if (Metadata.itemToEnchantmentNames(item_namespace).length == 0) {
             toast.error(wouldBeErrorText, {
-                position: "bottom-right",
-                closeOnClick: false,
-                draggable: false,
-                theme: "colored",
-                transition: Slide,
-                closeButton: false,
                 icon: <ion-icon name="warning-outline" class="ionicon-xl"></ion-icon>,
-                className: "enchants-not-found-toast"
-                });
+                className: "toast-err"
+            });
         } else Settings.setSelectedItem(item_namespace);
     };
 }

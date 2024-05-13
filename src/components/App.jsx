@@ -3,7 +3,7 @@ import Content from "./Content";
 import Header from "./Header";
 import { Translator } from "../scripts/Translator";
 import LoadDetector from "./LoadDetector";
-import { ToastContainer } from "react-toastify";
+import { Slide, ToastContainer } from "react-toastify";
 
 export default function App() {
     return (
@@ -12,7 +12,15 @@ export default function App() {
             <Content />
             <Footer />
             <LoadDetector callback={onLoad} />
-            <ToastContainer />
+            <ToastContainer 
+                pauseOnHover={false}
+                closeOnClick={false}
+                draggable={false}
+                closeButton={false}
+                transition={Slide}
+                position="bottom-right"
+                theme="colored"
+            />
         </main>
     );
 }
