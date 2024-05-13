@@ -9,7 +9,7 @@ function useForceUpdate() {
 
 export default function EnchantSelect() {
     const forceUpdate = useForceUpdate();
-    document.documentElement.addEventListener("RefreshEnchantSelect", forceUpdate);
+    $('html').on("RefreshEnchantSelect", forceUpdate);
 
     const item_namespace = Settings.getSelectedItem();
     const enchantment_namespaces = Metadata.itemToEnchantmentNames(item_namespace);

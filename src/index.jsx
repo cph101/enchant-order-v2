@@ -5,7 +5,7 @@ import App from "./components/App";
 import "react-toastify/dist/ReactToastify.css";
 import "./css/tailwind.css";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot($("#root").get(0)).render(
     <React.StrictMode>
         <App />
     </React.StrictMode>

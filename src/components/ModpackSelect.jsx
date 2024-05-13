@@ -9,7 +9,7 @@ function useForceUpdate() {
 
 export default function ModpackSelect() {
     const forceUpdate = useForceUpdate();
-    document.documentElement.addEventListener("RefreshModpackSelect", forceUpdate);
+    $('html').on("RefreshModpackSelect", forceUpdate);
 
     const modpack_namespaces = ["Minecraft", "Sword-Trident"];
     const modpack_is_loaded = Metadata.modpackIsLoaded;

@@ -69,8 +69,8 @@ function refreshAll() {
 }
 
 function refreshSelectedItem() {
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantSelect"));
+    $('html').trigger("RefreshItemSelect", []);
+    $('html').trigger("RefreshEnchantSelect", []);
 }
 async function refreshSelectedModpack() {
     const modpack_name = Settings.getSelectedModpack();
@@ -80,11 +80,11 @@ async function refreshSelectedModpack() {
         .then(updateMetadata);
 
     refreshItemAfterModpack(Settings.getSelectedItem());
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshModpackSelect"));
+    $('html').trigger("RefreshModpackSelect", []);
     refreshSelectedItem();
 }
 function refreshSelectedTab() {
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
+    $('html').trigger("RefreshItemSelect", []);
 }
 function refreshTheme() {}
 

@@ -11,7 +11,7 @@ function useForceUpdate() {
 
 export default function ItemSelect() {
     const forceUpdate = useForceUpdate();
-    document.documentElement.addEventListener("RefreshItemSelect", forceUpdate);
+    $('html').on("RefreshItemSelect", forceUpdate);
 
     const tab2item_namespaces = Metadata.getLayout();
     const modpack_is_loaded = Metadata.modpackIsLoaded;

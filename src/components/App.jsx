@@ -19,9 +19,9 @@ export default function App() {
 
 async function onLoad() {
     await Translator.setupLanguage();
-    document.documentElement.classList.add("finishedLoading");
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshModpackSelect"));
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemSelect"));
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshEnchantSelect"));
-    document.documentElement.dispatchEvent(new CustomEvent("RefreshItemDisplay"));
+    $('html').addClass("finishedLoading");
+    $('html').trigger("RefreshModpackSelect", []);
+    $('html').trigger("RefreshItemSelect", []);
+    $('html').trigger("RefreshEnchantSelect", []);
+    $('html').trigger("RefreshItemDisplay", []);
 }

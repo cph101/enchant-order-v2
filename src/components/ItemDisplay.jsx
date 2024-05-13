@@ -8,7 +8,7 @@ function useForceUpdate() {
 
 export default function ItemDisplay() {
     const forceUpdate = useForceUpdate();
-    document.documentElement.addEventListener("RefreshItemDisplay", forceUpdate);
+    $('html').on("RefreshItemDisplay", forceUpdate);
 
     const item_namespaces = ["sword", "book"];
     const modpack_is_loaded = Metadata.modpackIsLoaded;

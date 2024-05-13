@@ -56,6 +56,7 @@ export class Translator {
     }
 
     this.languageId = language;
+    $('#settings-lang-select').get(0).value = language;
     try {
       this.languageJson = await this.#loadJsonLanguage(language);
       if (this.languageJson) {
@@ -111,13 +112,13 @@ export class Translator {
    * @called on rerender
    */
   static #autoDetectTranstables() {
-    document.querySelectorAll('*[data-trnskey]').forEach(element => {
-      var paths = element.getAttribute("data-trnskey").split(".");
+    $('*[data-trnskey]').each((_, element) => {
+      var paths = $(element).attr("data-trnskey").split(".");
       var object = this.languageJson[paths[0]];
       for (var i = 1; i < paths.length; i++) {
         object = object[paths[i]];
       }
-      element.innerHTML = object
+      $(element).html(object);
     });
   }
 
