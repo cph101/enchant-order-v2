@@ -14,11 +14,20 @@ export class Translator {
   static languageId = '';
   static langListenerAttached;
 
+  /**
+   * @method Sets the page language to the most reasonable option
+   * @protected Should only be called when the page fully loads
+   */
   static async setupLanguage() {
     await this.#defineBrowserLanguage();
     await this.changePageLanguage(this.languageId || 'en');
   }
 
+  /**
+   * @method Loads the language stored in localstorage, 
+   * or the default browser language if the former is not found.
+   * @private Can and should only be used internally
+   */
   static async #defineBrowserLanguage() {
     if (!localStorage.getItem("savedlanguage")) {
       const browserLanguage = navigator.language || navigator.userLanguage;
@@ -28,6 +37,18 @@ export class Translator {
     }
   }
 
+  static getActiveLanguageId() {
+    return this.languageId;
+  }
+
+  static getAvailableLanguages() {
+    return Object.entries(languages);
+  }
+
+  /**
+   * @method loads a language by id and caches the result
+   * @param {String} language The id of the language to load
+   */
   static async changePageLanguage(language) {
     if (!languages[language]) {
       console.error("Trying to switch to unknown language:", language);
@@ -46,6 +67,12 @@ export class Translator {
     }
   }
 
+  /**
+   * @method fetches the lang file by id and sets the cached language to it
+   * @param {String} language The language id
+   * @private Can and should only be used internally
+   * @alternative use {@link changePageLanguage} instead
+   */
   static async #loadJsonLanguage(language) {
     return fetch(`languages/${language}.json`)
       .then(response => {
@@ -60,6 +87,12 @@ export class Translator {
       });
   }
 
+  /**
+   * @method sets the cached language file to the object passed
+   * @param {Object} languageJson The raw language file
+   * @private Can and should only be used internally
+   * @alternative use {@link changePageLanguage} instead
+   */
   static #changeLanguageByJson(languageJson) {
     const map = {};
     for (const i in languageJson.enchants) {
@@ -69,12 +102,15 @@ export class Translator {
       map[languageJson.enchants[i]] = i;
     }
 
-    document.querySelectorAll('*[data-trnskey]').forEach(element => {
-      element.innerHTML = languageJson[element.getAttribute("data-trnskey")] || '';
-    });
+    this.#autoDetectTranstables()
   }
 
-  static searchForComponents() {
+  /**
+   * @method Detects elements with the data-trnskey attribute and auto-translates them
+   * @private Can and should only be used internally
+   * @called on rerender
+   */
+  static #autoDetectTranstables() {
     document.querySelectorAll('*[data-trnskey]').forEach(element => {
       var paths = element.getAttribute("data-trnskey").split(".");
       var object = this.languageJson[paths[0]];
@@ -85,7 +121,14 @@ export class Translator {
     });
   }
 
-  static getTranslationUnsafe(key, fallback = key) {
+  /**
+   * @method Gets the raw translation of a translation key
+   * @usage Only use within dynamic contexts where data-trnskey will not work, such as when placeholders are required.
+   * @param {String} key The translation's key
+   * @param {String} fallback The fallback for the translation as a string, not required.
+   * @returns The translated result, as a {@link String}
+   */
+  static get(key, fallback = "Missing translation") {
     if (key == null) return fallback; // prevent prerender errors
     var paths = key.split(".");
     var object = this.languageJson[paths[0]];
@@ -94,5 +137,33 @@ export class Translator {
       object = object[paths[i]];
     }
     return object;
+  }
+
+  /**
+   * @method Gets the raw translation of a translation key, and applies passed placeholders
+   * @param {String} key The translation's key
+   * @param {String[]} args An array of placeholders, replacing {0}, {1}, etc.
+   * @prefer {@link getWPlaceholdersWFallback}, for doing the same while passing a failsafe.
+   * @returns The translated result, as a {@link String}
+   */
+  static getWPlaceholders(key, ...args) {
+    const translated = this.get(key, "");
+    return translated.replace(/{([0-9]+)}/g, function (match, index) {
+      return typeof args[index] === 'undefined' ? match : args[index];
+    });
+  }
+
+  /**
+   * @method Same as {@link getWPlaceholders}, but with a fallback
+   * @param {String} key The translation's key
+   * @param {String} fallback what to return if the translation is not found
+   * @param {String[]} args An array of placeholders, replacing {0}, {1}, etc.
+   * @returns The translated result, as a {@link String}
+   */
+  static getWPlaceholdersWFallback(key, fallback, ...args) {
+    const translated = this.get(key, fallback);
+    return translated.replace(/{([0-9]+)}/g, function (match, index) {
+      return typeof args[index] === 'undefined' ? match : args[index];
+    });
   }
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Translator } from "../scripts/Translator";
 
 export default function Settings() {
 
@@ -6,6 +7,11 @@ export default function Settings() {
 
     const refreshIfNecessary = () => {
         if (criticalSettingChanged) window.location.reload();
+    }
+
+    const changePageLanguage = (event) => {
+        Translator.changePageLanguage(event.target.value);
+        setChangeCritSetting(true);
     }
 
     return (
@@ -41,7 +47,15 @@ export default function Settings() {
                                 Loading...
                             </span>
                         </div>
-                        <select data-property="languageSelect" className="select-bordered select w-full max-w-xs" onChange={() => setChangeCritSetting(true)} />
+                        <select className="select-bordered select w-full max-w-xs" onChange={(e) => changePageLanguage(e)}>
+                            {Translator.getAvailableLanguages().map(([key, displayname]) => {
+                                if (Translator.getActiveLanguageId() == key) {
+                                    return <option value={key} selected>{displayname}</option>
+                                } else {
+                                    return <option value={key}>{displayname}</option>
+                                }
+                            })}
+                        </select>
                     </div>
                     <div className="overflow-x-auto mt-6">
                         <div className="label">
