@@ -3,7 +3,16 @@ export default {
   darkMode: "class",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "foreobject": {
+          DEFAULT: "var(--foreobject)",
+          100: "var(--foreobject)",
+          200: "var(--foreobject-200)",
+          300: "var(--foreobject-300)",
+        }
+      }
+    },
   },
   daisyui: {
     themes: [
@@ -35,7 +44,9 @@ export default {
           warning: "#ff9400",
           error: "#ffffff",
           secondary: "#672741",
-          "--foreobject": "#4d1d31",
+          "--foreobject": "#4D1D31",
+          "--foreobject-200": "#3F1828",
+          "--foreobject-300": "#30121F",
           ".btn:hover": {
             "background-color": "#451a2c",
             "border-color": "#451a2c",

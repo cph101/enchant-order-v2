@@ -10,7 +10,7 @@ export default function Footer() {
 
     return (
         <main>
-            <footer className="custom-content footer bg-foreobject">
+            <footer className="custom-content footer bg-foreobject-100">
                 {generateThemeSwitchers(themes)}
                 {generateCreditSelectors()}
             </footer>

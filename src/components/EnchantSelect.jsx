@@ -31,7 +31,7 @@ function generateEnchantmentSelector(enchantment_namespace) {
     const enchantment_name = Metadata.enchantmentNamespaceToName(enchantment_namespace);
     const key = Math.random();
     return (
-        <div key={key} className="p-2 rounded-[10px] text-center bg-[--foreobject] flex flex-col enchant-selected">
+        <div key={key} className="p-2 rounded-[10px] text-center bg-foreobject-100 flex flex-col enchant-selected">
             {generateSpacerOrNotFor(enchantment_namespace)}
             <span className="py-2">{enchantment_name}</span>
             <div className="grow" />

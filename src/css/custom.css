@@ -132,3 +132,8 @@
   background: oklch(var(--er)) !important;
   box-shadow: 0px 0px 8px 0px oklch(var(--er) / .3) !important;
 }
+
+.toast-succ {
+  background: oklch(var(--su)) !important;
+  box-shadow: 0px 0px 8px 0px oklch(var(--su) / .3) !important;
+}

@@ -3,9 +3,18 @@ import Content from "./Content";
 import Header from "./Header";
 import { Translator } from "../scripts/Translator";
 import LoadDetector from "./LoadDetector";
-import { Slide, ToastContainer } from "react-toastify";
+import { Slide, ToastContainer, toast } from "react-toastify";
 
 export default function App() {
+
+    $('html').on("test-toast-1", function(e) {
+        toast.success("Success test", {
+            icon: <ion-icon name="checkmark-outline" class="ionicon-xl"></ion-icon>,
+            className: "toast-succ"
+        });
+    })
+
+
     return (
         <main>
             <Header />

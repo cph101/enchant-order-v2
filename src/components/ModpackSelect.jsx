@@ -27,7 +27,7 @@ function generateModpackSelectors(modpack_namespaces) {
     return (
         <div id="modpackSelect" className="dropdown">
             {selected_modpack_section}
-            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-foreobject rounded-box w-52">
+            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-foreobject-100 rounded-box w-52">
                 {modpack_bullets}
             </ul>
         </div>
@@ -55,7 +55,7 @@ function modpackOnClickFunction(modpack_namespace) {
 function generateSelectedModpackDisplay(modpack_namespace) {
     const modpack_name = modpack_namespace;
     return (
-        <div tabIndex={0} role="button" className="btn m-1 bg-foreobject">
+        <div tabIndex={0} role="button" className="btn m-1 bg-foreobject-100">
             {modpack_name}
         </div>
     );

@@ -39,7 +39,7 @@ function generateTabPage(tab2item_namespaces) {
     const item_namespaces_in_tab = tab2item_namespaces[Settings.getSelectedTab()];
     const item_bullets = item_namespaces_in_tab.map(generateItemSelector);
     return (
-        <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-foreobject rounded-box w-52">
+        <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-foreobject-100 rounded-box w-52">
             {tabs}
             {item_bullets}
         </ul>
@@ -73,7 +73,7 @@ function generateSelectedItemDisplay(item_namespace) {
     const item_name = Metadata.itemNamespaceToName(item_namespace);
     const item_icon = generateItemIcon(item_namespace);
     return (
-        <div tabIndex={0} role="button" className="btn m-1 bg-foreobject">
+        <div tabIndex={0} role="button" className="btn m-1 bg-foreobject-100">
             {item_icon}
             {item_name}
         </div>
