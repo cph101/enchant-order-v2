@@ -1,5 +1,3 @@
-import { timSort } from "./TimSort";
-
 export class Metadata {
     static setMaximumMergeLevels(levels) {
         MergedItem.MAXMIMUM_MERGE_LEVELS = levels;
@@ -63,7 +61,7 @@ export class Hash {
     }
 
     static toEnchantment(enchantment_hash) {
-        const index = rightmostBitIndex(enchantment_hash);
+        const index = leastSignificantBitIndex(enchantment_hash);
         return Enchantment.objs[index];
     }
 
@@ -74,23 +72,19 @@ export class Hash {
     }
 
     static fromItems(items) {
-        // const hash = items
-        // .map((item) => item.hash)
-        // .sort()
-        // .reduce((previous_hash, hash) => previous_hash + hash + " ", "");
         let hash = items.map((item) => item.hash);
-        hash = timSort(hash) //
-            .reduce((previous_hash, hash) => previous_hash + hash + " ", "");
+        insertionSort(hash);
+        hash = hash.reduce((previous_hash, hash) => previous_hash + hash + " ", "");
         return hash;
     }
 
     static fromNewItem(is_book, prior_work, enchantment_objs) {
         const work_bits = Hash.prior_work_bitcount;
         const id_bits = Hash.item_id_bitcount;
-        const work_hash = prior_work;
-        const id_hash = is_book << work_bits;
-        const enchantments_hash = Hash.fromEnchantments(enchantment_objs) << (work_bits + id_bits);
-        const hash = work_hash + id_hash + enchantments_hash;
+        const hash =
+            prior_work | //
+            (is_book << work_bits) | //
+            (Hash.fromEnchantments(enchantment_objs) << (work_bits + id_bits));
         return hash;
     }
 
@@ -381,14 +375,29 @@ function getIds(objs) {
     return ids;
 }
 
-function numberOfOneBits(n) {
-    let i = 0;
-    do if (n & 1) ++i;
-    while ((n >>= 1));
-    return i;
+function insertionSort(array) {
+    const array_size = array.size;
+
+    for (let i = 1; i <= array_size - 1; i++) {
+        const key = array[i];
+        let j = i - 1;
+
+        while (j >= 0 && array[j] > key) {
+            array[j + 1] = array[j];
+            j--;
+        }
+
+        array[j + 1] = key;
+    }
 }
 
-function rightmostBitIndex(n) {
+function numberOfOneBits(n) {
+    let count;
+    for (count = 0; n; ++count) n &= n - 1;
+    return count;
+}
+
+function leastSignificantBitIndex(n) {
     let i = 0;
     do {
         if (n & 1) return i;
