@@ -5,7 +5,7 @@ export const languages = {
   'zh-CN': '中文',
   'nl': 'Nederlands',
   'de': 'Deutsch',
-  'be_BY': 'Belarusian',
+  'be_BY': 'Беларуская',
 };
 
 export class Translator {
